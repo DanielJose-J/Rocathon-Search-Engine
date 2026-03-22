@@ -1,0 +1,29 @@
+{
+  "name": "rocathon-hybrid-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check-data": "tsx src/checkData.ts",
+    "ingest": "tsx src/ingest.ts",
+    "embed-creators": "tsx src/embedCreators.ts",
+    "embed-creators-openai": "tsx src/embedCreatorsOpenAI.ts",
+    "search": "tsx src/search.ts",
+    "sanity-check": "tsx src/sanityCheck.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "openai": "^6.32.0",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "@types/pg": "^8.20.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
