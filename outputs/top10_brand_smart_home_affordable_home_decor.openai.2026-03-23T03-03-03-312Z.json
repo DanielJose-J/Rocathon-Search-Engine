@@ -1,0 +1,366 @@
+{
+  "generated_at": "2026-03-23T03:03:03.312Z",
+  "mode": "openai",
+  "query": "Affordable home decor for small apartments",
+  "brandProfile": {
+    "id": "brand_smart_home",
+    "industries": [
+      "smart home",
+      "home decor",
+      "home organization"
+    ],
+    "target_audience": {
+      "gender": "FEMALE",
+      "age_ranges": [
+        "18-24",
+        "25-34",
+        "35-44"
+      ]
+    },
+    "gmv": 50000
+  },
+  "results": [
+    {
+      "username": "mid_century_milo",
+      "bio": "Mid-century modern interior design, vintage furniture hunting, and creating timeless spaces with retro flair.",
+      "content_style_tags": [
+        "Home",
+        "Tools & Hardware"
+      ],
+      "projected_score": 82.97,
+      "metrics": {
+        "follower_count": 1707456,
+        "total_gmv_30d": 23644,
+        "avg_views_30d": 855938,
+        "engagement_rate": 0.09,
+        "gpm": 23,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7668,
+          "age_ranges": [
+            "25-34",
+            "35-44"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.4602849002286825,
+        "projected_score": 82.97,
+        "final_score": 0.8234632051029072
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Strong projected commerce score",
+        "Healthy recent GMV performance",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "cozy_home_eleanor",
+      "bio": "Cozy home decor and living room inspo. I help you make any space feel warm, lived-in, and beautiful.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 72,
+      "metrics": {
+        "follower_count": 87000,
+        "total_gmv_30d": 12000,
+        "avg_views_30d": 195000,
+        "engagement_rate": 0.11,
+        "gpm": 6.1,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 6900,
+          "age_ranges": [
+            "25-34",
+            "35-44"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.5057746859202678,
+        "projected_score": 72,
+        "final_score": 0.7635986086641204
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Healthy recent GMV performance",
+        "High engagement rate",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "thrift_flip_dani",
+      "bio": "Thrift store fashion finds and upcycling projects. Sustainable style on a secondhand budget for everyday wear.",
+      "content_style_tags": [
+        "Fashion"
+      ],
+      "projected_score": 90.68,
+      "metrics": {
+        "follower_count": 942783,
+        "total_gmv_30d": 45650,
+        "avg_views_30d": 1615229,
+        "engagement_rate": 0.12,
+        "gpm": 37,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 5620,
+          "age_ranges": [
+            "18-24",
+            "25-34",
+            "45-54"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.40758719568502255,
+        "projected_score": 90.68,
+        "final_score": 0.7421542380582602
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Strong recent GMV performance",
+        "High engagement rate"
+      ]
+    },
+    {
+      "username": "renter_decor_tips_kay",
+      "bio": "Apartment decor hacks for renters who cannot damage walls. Removable solutions and renter-friendly interior design.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 66.06,
+      "metrics": {
+        "follower_count": 1285462,
+        "total_gmv_30d": 556,
+        "avg_views_30d": 588341,
+        "engagement_rate": 0.07,
+        "gpm": 13,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 8081,
+          "age_ranges": [
+            "35-44",
+            "45-54"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.5741948019771073,
+        "projected_score": 66.06,
+        "final_score": 0.7017176608896983
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Low recent GMV so score is slightly penalized",
+        "Strong industry alignment with the brand",
+        "Audience aligns with the brand target"
+      ]
+    },
+    {
+      "username": "summer_fashion_maya",
+      "bio": "Summer fashion hauls and college girl outfit inspo. All about cute, affordable looks.",
+      "content_style_tags": [
+        "Fashion"
+      ],
+      "projected_score": 79,
+      "metrics": {
+        "follower_count": 228000,
+        "total_gmv_30d": 35000,
+        "avg_views_30d": 480000,
+        "engagement_rate": 0.09,
+        "gpm": 9.8,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7800,
+          "age_ranges": [
+            "18-24",
+            "25-34"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.42468672075409386,
+        "projected_score": 79,
+        "final_score": 0.6856090243393422
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Strong projected commerce score",
+        "Healthy recent GMV performance",
+        "Audience aligns with the brand target"
+      ]
+    },
+    {
+      "username": "craft_room_heidi",
+      "bio": "Scrapbooking, paper crafting, and DIY project tutorials. Turning everyday materials into meaningful keepsakes.",
+      "content_style_tags": [
+        "Toys & Hobbies"
+      ],
+      "projected_score": 83.64,
+      "metrics": {
+        "follower_count": 1547865,
+        "total_gmv_30d": 32639,
+        "avg_views_30d": 953568,
+        "engagement_rate": 0.04,
+        "gpm": 48,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 9433,
+          "age_ranges": [
+            "35-44",
+            "45-54"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.3617908849465259,
+        "projected_score": 83.64,
+        "final_score": 0.6828258982259368
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Strong projected commerce score",
+        "Healthy recent GMV performance",
+        "Audience aligns with the brand target"
+      ]
+    },
+    {
+      "username": "vintage_archive_mo",
+      "bio": "Vintage fashion curation and authentication. Shopping guides for preloved luxury and rare designer archive pieces.",
+      "content_style_tags": [
+        "Fashion"
+      ],
+      "projected_score": 89.09,
+      "metrics": {
+        "follower_count": 878540,
+        "total_gmv_30d": 127869,
+        "avg_views_30d": 64834,
+        "engagement_rate": 0.12,
+        "gpm": 15,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 6791,
+          "age_ranges": [
+            "18-24",
+            "45-54"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.28773018780594284,
+        "projected_score": 89.09,
+        "final_score": 0.6794735845126743
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Strong recent GMV performance",
+        "High engagement rate"
+      ]
+    },
+    {
+      "username": "natural_beauty_jade",
+      "bio": "Clean beauty advocate sharing non-toxic skincare, DIY masks, and sustainable cosmetics for conscious consumers.",
+      "content_style_tags": [
+        "Beauty"
+      ],
+      "projected_score": 91.36,
+      "metrics": {
+        "follower_count": 1494742,
+        "total_gmv_30d": 54627,
+        "avg_views_30d": 1564855,
+        "engagement_rate": 0.12,
+        "gpm": 36,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7884,
+          "age_ranges": [
+            "55+"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.3035934875169001,
+        "projected_score": 91.36,
+        "final_score": 0.669097069382605
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Strong recent GMV performance",
+        "High engagement rate"
+      ]
+    },
+    {
+      "username": "diy_furniture_flip_jo",
+      "bio": "Upcycling thrifted furniture with paint, new hardware, and creative techniques. Sustainable home makeovers on a budget.",
+      "content_style_tags": [
+        "Home",
+        "Tools & Hardware"
+      ],
+      "projected_score": 60.66,
+      "metrics": {
+        "follower_count": 629580,
+        "total_gmv_30d": 2076,
+        "avg_views_30d": 1436898,
+        "engagement_rate": 0.11,
+        "gpm": 15,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7456,
+          "age_ranges": [
+            "18-24",
+            "55+"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.48862400654164617,
+        "projected_score": 60.66,
+        "final_score": 0.6635108029437407
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Low recent GMV so score is slightly penalized",
+        "High engagement rate",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "alt_fashion_storm",
+      "bio": "Alternative and subculture fashion: goth, punk, dark academia, and grunge aesthetics for the non-mainstream crowd.",
+      "content_style_tags": [
+        "Fashion"
+      ],
+      "projected_score": 85.78,
+      "metrics": {
+        "follower_count": 361738,
+        "total_gmv_30d": 52370,
+        "avg_views_30d": 1563915,
+        "engagement_rate": 0.15,
+        "gpm": 15,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7266,
+          "age_ranges": [
+            "35-44",
+            "55+"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.2857865704370346,
+        "projected_score": 85.78,
+        "final_score": 0.6603939566966657
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Strong recent GMV performance",
+        "High engagement rate"
+      ]
+    }
+  ]
+}

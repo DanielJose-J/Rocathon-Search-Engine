@@ -1,6 +1,5 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { BrandProfile } from "./types";
 
 function buildTimestamp(): string {
   return new Date().toISOString().replace(/[:.]/g, "-");
@@ -11,7 +10,7 @@ export async function writeSearchOutputs(
   baseName: string,
   mode: "local" | "openai",
   query: string,
-  brandProfile: BrandProfile
+  brandProfile: unknown
 ) {
   const outputDir = path.join(process.cwd(), "outputs");
   await fs.mkdir(outputDir, { recursive: true });

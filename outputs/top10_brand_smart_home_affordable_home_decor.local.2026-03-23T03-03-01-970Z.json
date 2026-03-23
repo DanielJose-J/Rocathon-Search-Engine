@@ -1,0 +1,370 @@
+{
+  "generated_at": "2026-03-23T03:03:01.971Z",
+  "mode": "local",
+  "query": "Affordable home decor for small apartments",
+  "brandProfile": {
+    "id": "brand_smart_home",
+    "industries": [
+      "smart home",
+      "home decor",
+      "home organization"
+    ],
+    "target_audience": {
+      "gender": "FEMALE",
+      "age_ranges": [
+        "18-24",
+        "25-34",
+        "35-44"
+      ]
+    },
+    "gmv": 50000
+  },
+  "results": [
+    {
+      "username": "plumbing_diy_skip",
+      "bio": "Home plumbing repairs and upgrades that homeowners can tackle themselves. Saving thousands on contractor bills.",
+      "content_style_tags": [
+        "Tools & Hardware",
+        "Home"
+      ],
+      "projected_score": 96.93,
+      "metrics": {
+        "follower_count": 242361,
+        "total_gmv_30d": 183081,
+        "avg_views_30d": 1869676,
+        "engagement_rate": 0.04,
+        "gpm": 12,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 8833,
+          "age_ranges": [
+            "35-44",
+            "45-54"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.31980109214782715,
+        "projected_score": 96.93,
+        "final_score": 0.8070254914665224
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Strong recent GMV performance",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "home_office_setup_pam",
+      "bio": "Ergonomic home office design, productivity setups, and desk organization for remote workers who want to level up.",
+      "content_style_tags": [
+        "Home",
+        "Food & Beverage"
+      ],
+      "projected_score": 83.86,
+      "metrics": {
+        "follower_count": 1777068,
+        "total_gmv_30d": 45459,
+        "avg_views_30d": 1198299,
+        "engagement_rate": 0.05,
+        "gpm": 19,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 6805,
+          "age_ranges": [
+            "18-24",
+            "25-34"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.3922322988510132,
+        "projected_score": 83.86,
+        "final_score": 0.7977345344829558
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Strong projected commerce score",
+        "Strong recent GMV performance",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "small_space_living_lee",
+      "bio": "Maximizing tiny apartments and studio spaces. Clever storage solutions, multifunctional furniture, and smart layouts.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 90.2,
+      "metrics": {
+        "follower_count": 1854255,
+        "total_gmv_30d": 31445,
+        "avg_views_30d": 321751,
+        "engagement_rate": 0.07,
+        "gpm": 40,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 9247,
+          "age_ranges": [
+            "35-44",
+            "45-54",
+            "55+"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.26765168510829473,
+        "projected_score": 90.2,
+        "final_score": 0.7765432582987326
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Healthy recent GMV performance",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "mid_century_milo",
+      "bio": "Mid-century modern interior design, vintage furniture hunting, and creating timeless spaces with retro flair.",
+      "content_style_tags": [
+        "Home",
+        "Tools & Hardware"
+      ],
+      "projected_score": 82.97,
+      "metrics": {
+        "follower_count": 1707456,
+        "total_gmv_30d": 23644,
+        "avg_views_30d": 855938,
+        "engagement_rate": 0.09,
+        "gpm": 23,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7668,
+          "age_ranges": [
+            "25-34",
+            "35-44"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.22360680997371674,
+        "projected_score": 82.97,
+        "final_score": 0.7169580644881726
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Strong projected commerce score",
+        "Healthy recent GMV performance",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "repair_tech_tommy",
+      "bio": "DIY phone and laptop repair tutorials. Screen replacements, battery swaps, and fixing devices instead of replacing them.",
+      "content_style_tags": [
+        "Phones & Electronics"
+      ],
+      "projected_score": 83.9,
+      "metrics": {
+        "follower_count": 288797,
+        "total_gmv_30d": 38277,
+        "avg_views_30d": 1846491,
+        "engagement_rate": 0.01,
+        "gpm": 19,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7424,
+          "age_ranges": [
+            "18-24"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.3127716276875625,
+        "projected_score": 83.9,
+        "final_score": 0.7121972324594033
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Strong projected commerce score",
+        "Healthy recent GMV performance",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "cozy_home_eleanor",
+      "bio": "Cozy home decor and living room inspo. I help you make any space feel warm, lived-in, and beautiful.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 72,
+      "metrics": {
+        "follower_count": 87000,
+        "total_gmv_30d": 12000,
+        "avg_views_30d": 195000,
+        "engagement_rate": 0.11,
+        "gpm": 6.1,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 6900,
+          "age_ranges": [
+            "25-34",
+            "35-44"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.3464674456854895,
+        "projected_score": 72,
+        "final_score": 0.6919103505584703
+      },
+      "match_reasons": [
+        "Strong semantic relevance to the query",
+        "Healthy recent GMV performance",
+        "High engagement rate",
+        "Strong industry alignment with the brand"
+      ]
+    },
+    {
+      "username": "garage_org_hal",
+      "bio": "Garage organization systems, wall storage solutions, and workshop layout planning for optimal space utilization.",
+      "content_style_tags": [
+        "Tools & Hardware",
+        "Home"
+      ],
+      "projected_score": 75.57,
+      "metrics": {
+        "follower_count": 236829,
+        "total_gmv_30d": 7616,
+        "avg_views_30d": 791397,
+        "engagement_rate": 0.09,
+        "gpm": 13,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 5623,
+          "age_ranges": [
+            "18-24",
+            "25-34"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.26765168510829473,
+        "projected_score": 75.57,
+        "final_score": 0.6760782582987326
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Strong projected commerce score",
+        "Strong industry alignment with the brand",
+        "Audience aligns with the brand target"
+      ]
+    },
+    {
+      "username": "welding_basics_hugo",
+      "bio": "MIG and TIG welding tutorials for beginners. Metal fabrication projects, safety gear, and technique fundamentals.",
+      "content_style_tags": [
+        "Tools & Hardware",
+        "Home"
+      ],
+      "projected_score": 85.88,
+      "metrics": {
+        "follower_count": 158329,
+        "total_gmv_30d": 38986,
+        "avg_views_30d": 1310858,
+        "engagement_rate": 0.14,
+        "gpm": 16,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 6018,
+          "age_ranges": [
+            "45-54",
+            "55+"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.2288021743297577,
+        "projected_score": 85.88,
+        "final_score": 0.675300978448391
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Healthy recent GMV performance",
+        "High engagement rate"
+      ]
+    },
+    {
+      "username": "ladder_safety_tom",
+      "bio": "Ladder safety, scaffolding use, and elevated work practices. Keeping DIY enthusiasts safe while working at height.",
+      "content_style_tags": [
+        "Tools & Hardware",
+        "Home"
+      ],
+      "projected_score": 74.41,
+      "metrics": {
+        "follower_count": 180995,
+        "total_gmv_30d": 15126,
+        "avg_views_30d": 1640786,
+        "engagement_rate": 0.04,
+        "gpm": 40,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7596,
+          "age_ranges": [
+            "18-24"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.20000001788139343,
+        "projected_score": 74.41,
+        "final_score": 0.6592550080466271
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Healthy recent GMV performance",
+        "Strong industry alignment with the brand",
+        "Audience aligns with the brand target"
+      ]
+    },
+    {
+      "username": "toddler_activities_jen",
+      "bio": "Educational play ideas, sensory activities, and creative projects for toddlers. Making learning fun at home.",
+      "content_style_tags": [
+        "Baby & Maternity",
+        "Health"
+      ],
+      "projected_score": 90.01,
+      "metrics": {
+        "follower_count": 1573784,
+        "total_gmv_30d": 49720,
+        "avg_views_30d": 1209453,
+        "engagement_rate": 0.03,
+        "gpm": 16,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7683,
+          "age_ranges": [
+            "35-44",
+            "45-54"
+          ]
+        }
+      },
+      "scores": {
+        "semantic_score": 0.22360680173655767,
+        "projected_score": 90.01,
+        "final_score": 0.655678060781451
+      },
+      "match_reasons": [
+        "Good semantic relevance to the query",
+        "Very strong projected commerce score",
+        "Strong recent GMV performance",
+        "Audience aligns with the brand target"
+      ]
+    }
+  ]
+}

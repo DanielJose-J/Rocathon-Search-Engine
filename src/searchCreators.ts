@@ -51,18 +51,9 @@ function normalizeText(value: string): string {
 }
 
 function computeGmvPenalty(totalGmv30d: number): number {
-  if (totalGmv30d === 0) {
-    return 0.1;
-  }
-
-  if (totalGmv30d < 5000) {
-    return 0.05;
-  }
-
-  if (totalGmv30d < 15000) {
-    return 0.02;
-  }
-
+  if (totalGmv30d === 0) return 0.1;
+  if (totalGmv30d < 5000) return 0.05;
+  if (totalGmv30d < 15000) return 0.02;
   return 0;
 }
 
@@ -71,52 +62,45 @@ function computeCategoryAlignmentBoost(
   brandProfile: BrandProfile
 ): number {
   const tags = contentStyleTags.map(normalizeText);
-  const categories = (brandProfile.keyCategories ?? []).map(normalizeText);
+  const industries = (brandProfile.industries ?? []).map(normalizeText);
 
-  if (categories.length === 0 || tags.length === 0) {
+  if (industries.length === 0 || tags.length === 0) {
     return 0;
   }
 
   let boost = 0;
 
-  for (const category of categories) {
+  for (const industry of industries) {
     for (const tag of tags) {
-      if (tag === category) {
+      if (tag === industry) {
         boost += 0.06;
         continue;
       }
 
-      // smart home brand logic
       if (
-        category.includes("smart home") &&
-        (tag.includes("phones") ||
-          tag.includes("electronics") ||
-          tag === "home")
+        industry.includes("smart home") &&
+        (tag.includes("phones") || tag.includes("electronics") || tag === "home")
       ) {
         boost += 0.05;
         continue;
       }
 
-      // home organization / cleaning brand logic
       if (
-        (category.includes("home organization") || category.includes("cleaning")) &&
+        (industry.includes("home decor") ||
+          industry.includes("home organization") ||
+          industry.includes("furniture")) &&
         tag === "home"
       ) {
         boost += 0.04;
         continue;
       }
 
-      // adjacent home improvement logic
-      if (
-        category.includes("smart home") &&
-        tag.includes("tools")
-      ) {
+      if (industry.includes("smart home") && tag.includes("tools")) {
         boost += 0.02;
         continue;
       }
 
-      // partial phrase overlap
-      if (tag.includes(category) || category.includes(tag)) {
+      if (tag.includes(industry) || industry.includes(tag)) {
         boost += 0.03;
       }
     }
@@ -125,11 +109,38 @@ function computeCategoryAlignmentBoost(
   return Math.min(boost, 0.1);
 }
 
+function computeAudienceBoost(
+  creatorGender: string | null,
+  creatorAgeRanges: string[] | null,
+  brandProfile: BrandProfile
+): number {
+  let boost = 0;
+
+  const targetGender = normalizeText(brandProfile.target_audience?.gender ?? "");
+  const creatorGenderNorm = normalizeText(creatorGender ?? "");
+
+  if (targetGender && creatorGenderNorm && creatorGenderNorm.includes(targetGender)) {
+    boost += 0.03;
+  }
+
+  const targetAges = (brandProfile.target_audience?.age_ranges ?? []).map(normalizeText);
+  const creatorAges = (creatorAgeRanges ?? []).map(normalizeText);
+
+  const ageOverlap = targetAges.some((age) => creatorAges.includes(age));
+  if (ageOverlap) {
+    boost += 0.03;
+  }
+
+  return Math.min(boost, 0.06);
+}
+
 function computeFinalScore(
   semanticScore: number,
   projectedScore: number,
   totalGmv30d: number,
   contentStyleTags: string[],
+  creatorGender: string | null,
+  creatorAgeRanges: string[] | null,
   brandProfile: BrandProfile,
   semanticWeight = 0.45,
   projectedWeight = 0.55
@@ -142,8 +153,13 @@ function computeFinalScore(
 
   const gmvPenalty = computeGmvPenalty(totalGmv30d);
   const categoryBoost = computeCategoryAlignmentBoost(contentStyleTags, brandProfile);
+  const audienceBoost = computeAudienceBoost(
+    creatorGender,
+    creatorAgeRanges,
+    brandProfile
+  );
 
-  return baseScore - gmvPenalty + categoryBoost;
+  return baseScore - gmvPenalty + categoryBoost + audienceBoost;
 }
 
 function buildMatchReasons(input: {
@@ -152,20 +168,22 @@ function buildMatchReasons(input: {
   totalGmv30d: number;
   engagementRate: number;
   contentStyleTags: string[];
+  creatorGender: string | null;
+  creatorAgeRanges: string[] | null;
   brandProfile: BrandProfile;
 }): string[] {
   const reasons: string[] = [];
 
   if (input.semanticScore >= 0.3) {
-    reasons.push("Strong semantic relevance to the search query");
+    reasons.push("Strong semantic relevance to the query");
   } else if (input.semanticScore >= 0.2) {
-    reasons.push("Good semantic relevance to the search query");
+    reasons.push("Good semantic relevance to the query");
   }
 
   if (input.projectedScore >= 85) {
-    reasons.push("Very high projected business score");
+    reasons.push("Very strong projected commerce score");
   } else if (input.projectedScore >= 75) {
-    reasons.push("Strong projected business score");
+    reasons.push("Strong projected commerce score");
   }
 
   if (input.totalGmv30d >= 40000) {
@@ -173,30 +191,34 @@ function buildMatchReasons(input: {
   } else if (input.totalGmv30d >= 10000) {
     reasons.push("Healthy recent GMV performance");
   } else if (input.totalGmv30d > 0 && input.totalGmv30d < 5000) {
-    reasons.push("Low recent GMV, so score is slightly penalized");
+    reasons.push("Low recent GMV so score is slightly penalized");
   } else if (input.totalGmv30d === 0) {
-    reasons.push("No recent GMV, so score is penalized");
+    reasons.push("No recent GMV so score is penalized");
   }
 
   if (input.engagementRate >= 0.1) {
     reasons.push("High engagement rate");
-  } else if (input.engagementRate >= 0.06) {
-    reasons.push("Solid engagement rate");
   }
 
   const categoryBoost = computeCategoryAlignmentBoost(
     input.contentStyleTags,
     input.brandProfile
   );
-
   if (categoryBoost >= 0.05) {
-    reasons.push("Strong category alignment with the brand profile");
-  } else if (categoryBoost > 0) {
-    reasons.push("Some category alignment with the brand profile");
+    reasons.push("Strong industry alignment with the brand");
+  }
+
+  const audienceBoost = computeAudienceBoost(
+    input.creatorGender,
+    input.creatorAgeRanges,
+    input.brandProfile
+  );
+  if (audienceBoost > 0) {
+    reasons.push("Audience aligns with the brand target");
   }
 
   if (reasons.length === 0) {
-    reasons.push("Balanced contextual and performance fit");
+    reasons.push("Balanced contextual and commerce fit");
   }
 
   return reasons.slice(0, 4);
@@ -210,15 +232,16 @@ export async function searchCreators(
     throw new Error("Query cannot be empty.");
   }
 
-  const safeBrandProfile: BrandProfile = {
-    keyCategories: brandProfile?.keyCategories ?? [],
-    targetAudience: brandProfile?.targetAudience ?? [],
-    preferredTags: brandProfile?.preferredTags ?? [],
-  };
-
   const searchText = buildQueryText({
     query: query.trim(),
-    brandProfile: safeBrandProfile,
+    brandProfile: {
+      keyCategories: brandProfile.industries,
+      targetAudience: [
+        brandProfile.target_audience.gender,
+        ...(brandProfile.target_audience.age_ranges ?? []),
+      ],
+      preferredTags: [],
+    },
   });
 
   const queryEmbedding = embedTextLocal(searchText, 256);
@@ -274,7 +297,9 @@ export async function searchCreators(
       projectedScore,
       totalGmv30d,
       contentStyleTags,
-      safeBrandProfile
+      row.major_gender,
+      row.age_ranges ?? [],
+      brandProfile
     );
 
     return {
@@ -282,16 +307,6 @@ export async function searchCreators(
       bio: row.bio,
       content_style_tags: contentStyleTags,
       projected_score: projectedScore,
-      semantic_score: semanticScore,
-      final_score: finalScore,
-      match_reasons: buildMatchReasons({
-        semanticScore,
-        projectedScore,
-        totalGmv30d,
-        engagementRate,
-        contentStyleTags,
-        brandProfile: safeBrandProfile,
-      }),
       metrics: {
         follower_count: toSafeNumber(row.follower_count, "follower_count"),
         total_gmv_30d: totalGmv30d,
@@ -304,19 +319,38 @@ export async function searchCreators(
           age_ranges: row.age_ranges ?? [],
         },
       },
+      scores: {
+        semantic_score: semanticScore,
+        projected_score: projectedScore,
+        final_score: finalScore,
+      },
+      match_reasons: buildMatchReasons({
+        semanticScore,
+        projectedScore,
+        totalGmv30d,
+        engagementRate,
+        contentStyleTags,
+        creatorGender: row.major_gender,
+        creatorAgeRanges: row.age_ranges ?? [],
+        brandProfile,
+      }),
     };
   });
 
   ranked.sort((a, b) => {
-    if (b.final_score !== a.final_score) return b.final_score - a.final_score;
-    if (b.projected_score !== a.projected_score) return b.projected_score - a.projected_score;
+    if (b.scores.final_score !== a.scores.final_score) {
+      return b.scores.final_score - a.scores.final_score;
+    }
+    if (b.scores.projected_score !== a.scores.projected_score) {
+      return b.scores.projected_score - a.scores.projected_score;
+    }
     if (b.metrics.total_gmv_30d !== a.metrics.total_gmv_30d) {
       return b.metrics.total_gmv_30d - a.metrics.total_gmv_30d;
     }
     return a.username.localeCompare(b.username);
   });
 
-  return ranked;
+  return ranked.slice(0, 10);
 }
 
 export async function closeSearchPool() {

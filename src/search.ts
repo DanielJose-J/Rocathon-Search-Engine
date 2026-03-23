@@ -3,13 +3,16 @@ import { writeSearchOutputs } from "./outputWriter";
 import { BrandProfile } from "./types";
 
 async function main() {
-  const query =
-    "smart home creators for households who review useful home products";
+  const query = "Affordable home decor for small apartments";
 
   const brandProfile: BrandProfile = {
-    keyCategories: ["smart home", "home organization", "cleaning"],
-    targetAudience: ["households", "moms", "homeowners"],
-    preferredTags: ["practical", "trustworthy", "product reviewer"],
+    id: "brand_smart_home",
+    industries: ["smart home", "home decor", "home organization"],
+    target_audience: {
+      gender: "FEMALE",
+      age_ranges: ["18-24", "25-34", "35-44"],
+    },
+    gmv: 50000,
   };
 
   try {
@@ -18,14 +21,14 @@ async function main() {
     const { latestResultsPath, archiveResultsPath } =
       await writeSearchOutputs(
         results,
-        "output.brand_smart_home",
+        "top10_brand_smart_home_affordable_home_decor",
         "local",
         query,
-        brandProfile
+        brandProfile as any
       );
 
-    console.log("Top 10 local hybrid-ranked creators:");
-    console.log(JSON.stringify(results.slice(0, 10), null, 2));
+    console.log("Top 10 local ranked creators:");
+    console.log(JSON.stringify(results, null, 2));
     console.log(`Latest output written to: ${latestResultsPath}`);
     console.log(`Historical archive written to: ${archiveResultsPath}`);
   } catch (error) {

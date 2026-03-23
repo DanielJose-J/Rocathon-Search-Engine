@@ -1,7 +1,11 @@
 export type BrandProfile = {
-    keyCategories?: string[];
-    targetAudience?: string[];
-    preferredTags?: string[];
+    id: string;
+    industries: string[];
+    target_audience: {
+      gender: string;
+      age_ranges: string[];
+    };
+    gmv: number;
   };
   
   export type RankedCreator = {
@@ -9,9 +13,6 @@ export type BrandProfile = {
     bio: string;
     content_style_tags: string[];
     projected_score: number;
-    semantic_score: number;
-    final_score: number;
-    match_reasons: string[];
     metrics: {
       follower_count: number;
       total_gmv_30d: number;
@@ -24,4 +25,10 @@ export type BrandProfile = {
         age_ranges: string[] | null;
       };
     };
+    scores: {
+      semantic_score: number;
+      projected_score: number;
+      final_score: number;
+    };
+    match_reasons?: string[];
   };
