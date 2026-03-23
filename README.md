@@ -85,7 +85,6 @@ The search query is embedded and used to retrieve the top candidate creators thr
 
 Example retrieval pattern:
 
-```sql
 ORDER BY embedding <=> $1::vector
 LIMIT 50
 
