@@ -85,8 +85,9 @@ The search query is embedded and used to retrieve the top candidate creators thr
 
 Example retrieval pattern:
 
+'''sql
 ORDER BY embedding <=> $1::vector
-LIMIT 50
+LIMIT 50'''
 
 This satisfies the challenge requirement to use a **vector database approach** and avoids performing a full linear scan in application code.
 
@@ -135,6 +136,7 @@ This implementation satisfies the vector database constraint because:
 
 ### Project Structure
 
+```text
 .
 ├── data/
 │   └── creators.json
@@ -162,6 +164,7 @@ This implementation satisfies the vector database constraint because:
 ├── package-lock.json
 ├── tsconfig.json
 └── README.md
+```
 
 
 ## Database Design
