@@ -84,6 +84,57 @@ function validateCreator(raw: any): Creator {
   };
 }
 
+async function upsertCreator(tableName: "creators_local" | "creators_openai", creator: Creator) {
+  await pool.query(
+    `
+    INSERT INTO ${tableName} (
+      username,
+      bio,
+      content_style_tags,
+      projected_score,
+      follower_count,
+      total_gmv_30d,
+      avg_views_30d,
+      engagement_rate,
+      gpm,
+      major_gender,
+      gender_pct,
+      age_ranges
+    )
+    VALUES (
+      $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12
+    )
+    ON CONFLICT (username)
+    DO UPDATE SET
+      bio = EXCLUDED.bio,
+      content_style_tags = EXCLUDED.content_style_tags,
+      projected_score = EXCLUDED.projected_score,
+      follower_count = EXCLUDED.follower_count,
+      total_gmv_30d = EXCLUDED.total_gmv_30d,
+      avg_views_30d = EXCLUDED.avg_views_30d,
+      engagement_rate = EXCLUDED.engagement_rate,
+      gpm = EXCLUDED.gpm,
+      major_gender = EXCLUDED.major_gender,
+      gender_pct = EXCLUDED.gender_pct,
+      age_ranges = EXCLUDED.age_ranges
+    `,
+    [
+      creator.username,
+      creator.bio,
+      creator.content_style_tags,
+      creator.projected_score,
+      creator.metrics.follower_count,
+      creator.metrics.total_gmv_30d,
+      creator.metrics.avg_views_30d,
+      creator.metrics.engagement_rate,
+      creator.metrics.gpm,
+      creator.metrics.demographics?.major_gender ?? null,
+      creator.metrics.demographics?.gender_pct ?? null,
+      creator.metrics.demographics?.age_ranges ?? null,
+    ]
+  );
+}
+
 async function main() {
   const filePath = path.join(process.cwd(), "data", "creators.json");
 
@@ -118,65 +169,21 @@ async function main() {
 
   for (const creator of creators) {
     try {
-      await pool.query(
-        `
-        INSERT INTO creators (
-          username,
-          bio,
-          content_style_tags,
-          projected_score,
-          follower_count,
-          total_gmv_30d,
-          avg_views_30d,
-          engagement_rate,
-          gpm,
-          major_gender,
-          gender_pct,
-          age_ranges
-        )
-        VALUES (
-          $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12
-        )
-        ON CONFLICT (username)
-        DO UPDATE SET
-          bio = EXCLUDED.bio,
-          content_style_tags = EXCLUDED.content_style_tags,
-          projected_score = EXCLUDED.projected_score,
-          follower_count = EXCLUDED.follower_count,
-          total_gmv_30d = EXCLUDED.total_gmv_30d,
-          avg_views_30d = EXCLUDED.avg_views_30d,
-          engagement_rate = EXCLUDED.engagement_rate,
-          gpm = EXCLUDED.gpm,
-          major_gender = EXCLUDED.major_gender,
-          gender_pct = EXCLUDED.gender_pct,
-          age_ranges = EXCLUDED.age_ranges
-        `,
-        [
-          creator.username,
-          creator.bio,
-          creator.content_style_tags,
-          creator.projected_score,
-          creator.metrics.follower_count,
-          creator.metrics.total_gmv_30d,
-          creator.metrics.avg_views_30d,
-          creator.metrics.engagement_rate,
-          creator.metrics.gpm,
-          creator.metrics.demographics?.major_gender ?? null,
-          creator.metrics.demographics?.gender_pct ?? null,
-          creator.metrics.demographics?.age_ranges ?? null,
-        ]
-      );
-
+      await upsertCreator("creators_local", creator);
+      await upsertCreator("creators_openai", creator);
       successCount += 1;
-      console.log(`Inserted/updated: ${creator.username}`);
+      console.log(`Inserted/updated in both tables: ${creator.username}`);
     } catch (error) {
       throw new Error(`Failed inserting creator ${creator.username}: ${String(error)}`);
     }
   }
 
-  const countResult = await pool.query("SELECT COUNT(*) FROM creators");
+  const localCount = await pool.query("SELECT COUNT(*) FROM creators_local");
+  const openaiCount = await pool.query("SELECT COUNT(*) FROM creators_openai");
+
   console.log("Inserted/updated creators:", successCount);
-  console.log("Total rows in creators table:", countResult.rows[0].count);
+  console.log("Total rows in creators_local:", localCount.rows[0].count);
+  console.log("Total rows in creators_openai:", openaiCount.rows[0].count);
 
   await pool.end();
 }

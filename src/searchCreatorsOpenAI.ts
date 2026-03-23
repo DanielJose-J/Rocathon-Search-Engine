@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
+import OpenAI from "openai";
 import { Pool } from "pg";
-import { buildQueryText, embedTextLocal, toPgVector } from "./localEmbed";
 import { BrandProfile, RankedCreator } from "./types";
 
 dotenv.config();
@@ -9,9 +9,19 @@ if (!process.env.DATABASE_URL) {
   throw new Error("Missing DATABASE_URL in .env");
 }
 
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error("Missing OPENAI_API_KEY in .env");
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
+
+const client = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const MODEL = "text-embedding-3-small";
 
 type RawCreatorRow = {
   username: string;
@@ -29,8 +39,41 @@ type RawCreatorRow = {
   semantic_score: number;
 };
 
-function isZeroVector(vec: number[]): boolean {
-  return vec.every((v) => v === 0);
+function toPgVector(vec: number[]): string {
+  if (!Array.isArray(vec) || vec.length === 0) {
+    throw new Error("Cannot convert empty vector to pgvector format.");
+  }
+
+  if (vec.some((v) => typeof v !== "number" || Number.isNaN(v))) {
+    throw new Error("Vector contains invalid numeric values.");
+  }
+
+  return `[${vec.join(",")}]`;
+}
+
+function buildQueryText(input: {
+  query: string;
+  brandProfile?: {
+    keyCategories?: string[];
+    targetAudience?: string[];
+    preferredTags?: string[];
+  };
+}): string {
+  const parts = [`Query: ${typeof input.query === "string" ? input.query : ""}`];
+
+  if (input.brandProfile?.keyCategories?.length) {
+    parts.push(`Categories: ${input.brandProfile.keyCategories.join(" ")}`);
+  }
+
+  if (input.brandProfile?.targetAudience?.length) {
+    parts.push(`Audience: ${input.brandProfile.targetAudience.join(" ")}`);
+  }
+
+  if (input.brandProfile?.preferredTags?.length) {
+    parts.push(`Preferred tags: ${input.brandProfile.preferredTags.join(" ")}`);
+  }
+
+  return parts.join("\n");
 }
 
 function toSafeNumber(value: string | number | null, fieldName: string): number {
@@ -86,7 +129,6 @@ function computeCategoryAlignmentBoost(
         continue;
       }
 
-      // smart home brand logic
       if (
         category.includes("smart home") &&
         (tag.includes("phones") ||
@@ -97,7 +139,6 @@ function computeCategoryAlignmentBoost(
         continue;
       }
 
-      // home organization / cleaning brand logic
       if (
         (category.includes("home organization") || category.includes("cleaning")) &&
         tag === "home"
@@ -106,7 +147,6 @@ function computeCategoryAlignmentBoost(
         continue;
       }
 
-      // adjacent home improvement logic
       if (
         category.includes("smart home") &&
         tag.includes("tools")
@@ -115,7 +155,6 @@ function computeCategoryAlignmentBoost(
         continue;
       }
 
-      // partial phrase overlap
       if (tag.includes(category) || category.includes(tag)) {
         boost += 0.03;
       }
@@ -202,7 +241,26 @@ function buildMatchReasons(input: {
   return reasons.slice(0, 4);
 }
 
-export async function searchCreators(
+function getOpenAIErrorMessage(error: any): string {
+  const status = error?.status;
+  const message = error?.error?.message || error?.message || "Unknown OpenAI error";
+
+  if (status === 401) {
+    return `OpenAI authentication/permission error: ${message}`;
+  }
+
+  if (status === 429) {
+    return `OpenAI quota or rate limit error: ${message}`;
+  }
+
+  if (status >= 500) {
+    return `OpenAI server error: ${message}`;
+  }
+
+  return `OpenAI request failed: ${message}`;
+}
+
+export async function searchCreatorsOpenAI(
   query: string,
   brandProfile: BrandProfile
 ): Promise<RankedCreator[]> {
@@ -221,11 +279,17 @@ export async function searchCreators(
     brandProfile: safeBrandProfile,
   });
 
-  const queryEmbedding = embedTextLocal(searchText, 256);
-
-  if (isZeroVector(queryEmbedding)) {
-    throw new Error("Query embedding is empty. Please provide a more descriptive query.");
+  let response;
+  try {
+    response = await client.embeddings.create({
+      model: MODEL,
+      input: searchText,
+    });
+  } catch (error: any) {
+    throw new Error(getOpenAIErrorMessage(error));
   }
+
+  const queryEmbedding = response.data[0].embedding;
 
   let result;
   try {
@@ -245,7 +309,7 @@ export async function searchCreators(
         gender_pct,
         age_ranges,
         1 - (embedding <=> $1::vector) AS semantic_score
-      FROM creators_local
+      FROM creators_openai
       WHERE embedding IS NOT NULL
       ORDER BY embedding <=> $1::vector
       LIMIT 50
@@ -253,13 +317,11 @@ export async function searchCreators(
       [toPgVector(queryEmbedding)]
     );
   } catch (error) {
-    throw new Error(`Database search failed: ${String(error)}`);
+    throw new Error(`OpenAI database search failed: ${String(error)}`);
   }
 
   if (result.rows.length === 0) {
-    throw new Error(
-      "No local creators found. Make sure ingestion and local embedding generation have been completed."
-    );
+    throw new Error("No OpenAI-embedded creators found. Run embed-creators-openai first.");
   }
 
   const ranked = result.rows.map((row) => {
@@ -319,6 +381,6 @@ export async function searchCreators(
   return ranked;
 }
 
-export async function closeSearchPool() {
+export async function closeSearchOpenAIPool() {
   await pool.end();
 }

@@ -1,5 +1,6 @@
 {
-  "generated_at": "2026-03-22T23:29:28.345Z",
+  "generated_at": "2026-03-23T00:29:06.828Z",
+  "mode": "local",
   "query": "smart home creators for households who review useful home products",
   "brandProfile": {
     "keyCategories": [
@@ -300,37 +301,6 @@
       }
     },
     {
-      "username": "cocktail_craft_omar",
-      "bio": "Mixologist creating craft cocktails and mocktails at home. Fancy drinks without the bar tab.",
-      "content_style_tags": [
-        "Food & Beverage"
-      ],
-      "projected_score": 79.21,
-      "semantic_score": 0.287554038312791,
-      "final_score": 0.5650543172407559,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "Healthy recent GMV performance",
-        "High engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1708158,
-        "total_gmv_30d": 13269,
-        "avg_views_30d": 1407760,
-        "engagement_rate": 0.12,
-        "gpm": 34,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 6198,
-          "age_ranges": [
-            "25-34",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
       "username": "mid_century_milo",
       "bio": "Mid-century modern interior design, vintage furniture hunting, and creating timeless spaces with retro flair.",
       "content_style_tags": [
@@ -358,37 +328,6 @@
           "age_ranges": [
             "25-34",
             "35-44"
-          ]
-        }
-      }
-    },
-    {
-      "username": "charging_tech_oscar",
-      "bio": "Wireless charging, fast charging standards, and power bank reviews. Never run out of battery again.",
-      "content_style_tags": [
-        "Phones & Electronics"
-      ],
-      "projected_score": 76.35,
-      "semantic_score": 0.299501222401785,
-      "final_score": 0.5547005500808032,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "Healthy recent GMV performance"
-      ],
-      "metrics": {
-        "follower_count": 1730885,
-        "total_gmv_30d": 13186,
-        "avg_views_30d": 477180,
-        "engagement_rate": 0.02,
-        "gpm": 29,
-        "demographics": {
-          "major_gender": "MALE",
-          "gender_pct": 6867,
-          "age_ranges": [
-            "25-34",
-            "35-44",
-            "45-54"
           ]
         }
       }
@@ -425,216 +364,32 @@
       }
     },
     {
-      "username": "office_chair_rex_jr",
-      "bio": "Ergonomic office chair reviews and posture correction guides. Investing in your back for long work-from-home sessions.",
-      "content_style_tags": [
-        "Computer & Office Equipment"
-      ],
-      "projected_score": 76.04,
-      "semantic_score": 0.28318272333248173,
-      "final_score": 0.5456522254996169,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "High engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 431025,
-        "total_gmv_30d": 5524,
-        "avg_views_30d": 1388869,
-        "engagement_rate": 0.1,
-        "gpm": 43,
-        "demographics": {
-          "major_gender": "MALE",
-          "gender_pct": 5700,
-          "age_ranges": [
-            "18-24",
-            "25-34",
-            "55+"
-          ]
-        }
-      }
-    },
-    {
-      "username": "bathroom_reno_tips_sue",
-      "bio": "Bathroom renovation guides, tile trends, and budget-friendly updates that make a big impact without full gut jobs.",
-      "content_style_tags": [
-        "Home"
-      ],
-      "projected_score": 79.38,
-      "semantic_score": 0.23478689880449222,
-      "final_score": 0.5422441044620215,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "High engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1028348,
-        "total_gmv_30d": 7526,
-        "avg_views_30d": 199845,
-        "engagement_rate": 0.15,
-        "gpm": 11,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 6620,
-          "age_ranges": [
-            "35-44",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
-      "username": "earbuds_lab_dev",
-      "bio": "Comprehensive wireless earbud and headphone reviews covering sound quality, ANC, and battery life.",
-      "content_style_tags": [
-        "Phones & Electronics"
-      ],
-      "projected_score": 75.59,
-      "semantic_score": 0.2798845601150661,
-      "final_score": 0.5416930520517798,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "Healthy recent GMV performance",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1471861,
-        "total_gmv_30d": 11893,
-        "avg_views_30d": 554760,
-        "engagement_rate": 0.06,
-        "gpm": 7,
-        "demographics": {
-          "major_gender": "MALE",
-          "gender_pct": 6569,
-          "age_ranges": [
-            "18-24",
-            "25-34",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
-      "username": "garage_org_hal",
-      "bio": "Garage organization systems, wall storage solutions, and workshop layout planning for optimal space utilization.",
-      "content_style_tags": [
-        "Tools & Hardware",
-        "Home"
-      ],
-      "projected_score": 75.57,
-      "semantic_score": 0.2798845684562763,
-      "final_score": 0.5415830558053243,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 236829,
-        "total_gmv_30d": 7616,
-        "avg_views_30d": 791397,
-        "engagement_rate": 0.09,
-        "gpm": 13,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 5623,
-          "age_ranges": [
-            "18-24",
-            "25-34"
-          ]
-        }
-      }
-    },
-    {
-      "username": "taco_tuesday_rosa",
-      "bio": "Mexican home cooking and taco culture. Authentic recipes passed down from grandma with a modern twist.",
+      "username": "cocktail_craft_omar",
+      "bio": "Mixologist creating craft cocktails and mocktails at home. Fancy drinks without the bar tab.",
       "content_style_tags": [
         "Food & Beverage"
       ],
-      "projected_score": 75.75,
-      "semantic_score": 0.2727977254152987,
-      "final_score": 0.5393839764368844,
+      "projected_score": 79.21,
+      "semantic_score": 0.287554038312791,
+      "final_score": 0.5450543172407559,
       "match_reasons": [
         "Good semantic relevance to the search query",
         "Strong projected business score",
-        "Healthy recent GMV performance"
-      ],
-      "metrics": {
-        "follower_count": 1865914,
-        "total_gmv_30d": 11145,
-        "avg_views_30d": 825376,
-        "engagement_rate": 0.04,
-        "gpm": 10,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 8384,
-          "age_ranges": [
-            "25-34",
-            "45-54",
-            "55+"
-          ]
-        }
-      }
-    },
-    {
-      "username": "cozy_home_eleanor",
-      "bio": "Cozy home decor and living room inspo. I help you make any space feel warm, lived-in, and beautiful.",
-      "content_style_tags": [
-        "Home"
-      ],
-      "projected_score": 72,
-      "semantic_score": 0.3170147145684161,
-      "final_score": 0.5386566215557873,
-      "match_reasons": [
-        "Strong semantic relevance to the search query",
         "Healthy recent GMV performance",
         "High engagement rate"
       ],
       "metrics": {
-        "follower_count": 87000,
-        "total_gmv_30d": 12000,
-        "avg_views_30d": 195000,
-        "engagement_rate": 0.11,
-        "gpm": 6.1,
+        "follower_count": 1708158,
+        "total_gmv_30d": 13269,
+        "avg_views_30d": 1407760,
+        "engagement_rate": 0.12,
+        "gpm": 34,
         "demographics": {
           "major_gender": "FEMALE",
-          "gender_pct": 6900,
+          "gender_pct": 6198,
           "age_ranges": [
             "25-34",
-            "35-44"
-          ]
-        }
-      }
-    },
-    {
-      "username": "smart_home_build_eli",
-      "bio": "Smart home automation guides using Google Home, Alexa, and HomeKit. Building the connected home step by step.",
-      "content_style_tags": [
-        "Phones & Electronics"
-      ],
-      "projected_score": 63.13,
-      "semantic_score": 0.4247741103172332,
-      "final_score": 0.5383633496427549,
-      "match_reasons": [
-        "Strong semantic relevance to the search query",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1344811,
-        "total_gmv_30d": 0,
-        "avg_views_30d": 920869,
-        "engagement_rate": 0.06,
-        "gpm": 0,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 9145,
-          "age_ranges": [
-            "25-34",
-            "45-54",
-            "55+"
+            "45-54"
           ]
         }
       }
@@ -671,31 +426,217 @@
       }
     },
     {
-      "username": "candle_and_scent_ava",
-      "bio": "Home fragrance, candle making, and creating ambient spaces with scent. Transform your home into a sensory retreat.",
+      "username": "charging_tech_oscar",
+      "bio": "Wireless charging, fast charging standards, and power bank reviews. Never run out of battery again.",
       "content_style_tags": [
-        "Home",
-        "Food & Beverage"
+        "Phones & Electronics"
       ],
-      "projected_score": 61.64,
-      "semantic_score": 0.432292776337483,
-      "final_score": 0.5335517493518673,
+      "projected_score": 76.35,
+      "semantic_score": 0.299501222401785,
+      "final_score": 0.5347005500808032,
       "match_reasons": [
-        "Strong semantic relevance to the search query",
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
+        "Healthy recent GMV performance"
+      ],
+      "metrics": {
+        "follower_count": 1730885,
+        "total_gmv_30d": 13186,
+        "avg_views_30d": 477180,
+        "engagement_rate": 0.02,
+        "gpm": 29,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 6867,
+          "age_ranges": [
+            "25-34",
+            "35-44",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
+      "username": "office_chair_rex_jr",
+      "bio": "Ergonomic office chair reviews and posture correction guides. Investing in your back for long work-from-home sessions.",
+      "content_style_tags": [
+        "Computer & Office Equipment"
+      ],
+      "projected_score": 76.04,
+      "semantic_score": 0.28318272333248173,
+      "final_score": 0.5256522254996169,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
         "High engagement rate"
       ],
       "metrics": {
-        "follower_count": 126014,
-        "total_gmv_30d": 2066,
-        "avg_views_30d": 78688,
+        "follower_count": 431025,
+        "total_gmv_30d": 5524,
+        "avg_views_30d": 1388869,
+        "engagement_rate": 0.1,
+        "gpm": 43,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 5700,
+          "age_ranges": [
+            "18-24",
+            "25-34",
+            "55+"
+          ]
+        }
+      }
+    },
+    {
+      "username": "bathroom_reno_tips_sue",
+      "bio": "Bathroom renovation guides, tile trends, and budget-friendly updates that make a big impact without full gut jobs.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 79.38,
+      "semantic_score": 0.23478689880449222,
+      "final_score": 0.5222441044620215,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
+        "High engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1028348,
+        "total_gmv_30d": 7526,
+        "avg_views_30d": 199845,
         "engagement_rate": 0.15,
-        "gpm": 3,
+        "gpm": 11,
         "demographics": {
           "major_gender": "FEMALE",
-          "gender_pct": 5829,
+          "gender_pct": 6620,
+          "age_ranges": [
+            "35-44",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
+      "username": "earbuds_lab_dev",
+      "bio": "Comprehensive wireless earbud and headphone reviews covering sound quality, ANC, and battery life.",
+      "content_style_tags": [
+        "Phones & Electronics"
+      ],
+      "projected_score": 75.59,
+      "semantic_score": 0.2798845601150661,
+      "final_score": 0.5216930520517797,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
+        "Healthy recent GMV performance",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1471861,
+        "total_gmv_30d": 11893,
+        "avg_views_30d": 554760,
+        "engagement_rate": 0.06,
+        "gpm": 7,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 6569,
+          "age_ranges": [
+            "18-24",
+            "25-34",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
+      "username": "garage_org_hal",
+      "bio": "Garage organization systems, wall storage solutions, and workshop layout planning for optimal space utilization.",
+      "content_style_tags": [
+        "Tools & Hardware",
+        "Home"
+      ],
+      "projected_score": 75.57,
+      "semantic_score": 0.2798845684562763,
+      "final_score": 0.5215830558053243,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 236829,
+        "total_gmv_30d": 7616,
+        "avg_views_30d": 791397,
+        "engagement_rate": 0.09,
+        "gpm": 13,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 5623,
           "age_ranges": [
             "18-24",
             "25-34"
+          ]
+        }
+      }
+    },
+    {
+      "username": "taco_tuesday_rosa",
+      "bio": "Mexican home cooking and taco culture. Authentic recipes passed down from grandma with a modern twist.",
+      "content_style_tags": [
+        "Food & Beverage"
+      ],
+      "projected_score": 75.75,
+      "semantic_score": 0.2727977254152987,
+      "final_score": 0.5193839764368844,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
+        "Healthy recent GMV performance"
+      ],
+      "metrics": {
+        "follower_count": 1865914,
+        "total_gmv_30d": 11145,
+        "avg_views_30d": 825376,
+        "engagement_rate": 0.04,
+        "gpm": 10,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 8384,
+          "age_ranges": [
+            "25-34",
+            "45-54",
+            "55+"
+          ]
+        }
+      }
+    },
+    {
+      "username": "cozy_home_eleanor",
+      "bio": "Cozy home decor and living room inspo. I help you make any space feel warm, lived-in, and beautiful.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 72,
+      "semantic_score": 0.3170147145684161,
+      "final_score": 0.5186566215557873,
+      "match_reasons": [
+        "Strong semantic relevance to the search query",
+        "Healthy recent GMV performance",
+        "High engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 87000,
+        "total_gmv_30d": 12000,
+        "avg_views_30d": 195000,
+        "engagement_rate": 0.11,
+        "gpm": 6.1,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 6900,
+          "age_ranges": [
+            "25-34",
+            "35-44"
           ]
         }
       }
@@ -709,7 +650,7 @@
       ],
       "projected_score": 78.41,
       "semantic_score": 0.21349799850595041,
-      "final_score": 0.5273290993276778,
+      "final_score": 0.5073290993276778,
       "match_reasons": [
         "Good semantic relevance to the search query",
         "Strong projected business score",
@@ -727,94 +668,6 @@
           "age_ranges": [
             "18-24",
             "45-54",
-            "55+"
-          ]
-        }
-      }
-    },
-    {
-      "username": "phone_reviewer_kai",
-      "bio": "In-depth smartphone reviews, camera comparisons, and benchmark tests for flagship and budget Android and iOS devices.",
-      "content_style_tags": [
-        "Phones & Electronics"
-      ],
-      "projected_score": 77.5,
-      "semantic_score": 0.20543854204186585,
-      "final_score": 0.5186973439188397,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Strong projected business score",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1715870,
-        "total_gmv_30d": 5644,
-        "avg_views_30d": 1461925,
-        "engagement_rate": 0.07,
-        "gpm": 21,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 5750,
-          "age_ranges": [
-            "18-24",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
-      "username": "mountain_biker_ty",
-      "bio": "Technical trail mountain biking content, gear reviews, and scenic descent videos from trails across North America.",
-      "content_style_tags": [
-        "Sports & Outdoors",
-        "Health"
-      ],
-      "projected_score": 70.54,
-      "semantic_score": 0.2543851879605543,
-      "final_score": 0.5024433345822494,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "High engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 584091,
-        "total_gmv_30d": 2766,
-        "avg_views_30d": 1397693,
-        "engagement_rate": 0.11,
-        "gpm": 13,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 7937,
-          "age_ranges": [
-            "18-24",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
-      "username": "scandinavian_living_el",
-      "bio": "Scandinavian interior design principles, hygge philosophy, and minimalist home aesthetics for clean, calm spaces.",
-      "content_style_tags": [
-        "Home",
-        "Tools & Hardware"
-      ],
-      "projected_score": 62.58,
-      "semantic_score": 0.3497796550458787,
-      "final_score": 0.5015908447706454,
-      "match_reasons": [
-        "Strong semantic relevance to the search query"
-      ],
-      "metrics": {
-        "follower_count": 676177,
-        "total_gmv_30d": 0,
-        "avg_views_30d": 684849,
-        "engagement_rate": 0.04,
-        "gpm": 0,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 8405,
-          "age_ranges": [
             "55+"
           ]
         }
@@ -850,6 +703,98 @@
       }
     },
     {
+      "username": "phone_reviewer_kai",
+      "bio": "In-depth smartphone reviews, camera comparisons, and benchmark tests for flagship and budget Android and iOS devices.",
+      "content_style_tags": [
+        "Phones & Electronics"
+      ],
+      "projected_score": 77.5,
+      "semantic_score": 0.20543854204186585,
+      "final_score": 0.4986973439188397,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Strong projected business score",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1715870,
+        "total_gmv_30d": 5644,
+        "avg_views_30d": 1461925,
+        "engagement_rate": 0.07,
+        "gpm": 21,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 5750,
+          "age_ranges": [
+            "18-24",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
+      "username": "candle_and_scent_ava",
+      "bio": "Home fragrance, candle making, and creating ambient spaces with scent. Transform your home into a sensory retreat.",
+      "content_style_tags": [
+        "Home",
+        "Food & Beverage"
+      ],
+      "projected_score": 61.64,
+      "semantic_score": 0.432292776337483,
+      "final_score": 0.48355174935186734,
+      "match_reasons": [
+        "Strong semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
+        "High engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 126014,
+        "total_gmv_30d": 2066,
+        "avg_views_30d": 78688,
+        "engagement_rate": 0.15,
+        "gpm": 3,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 5829,
+          "age_ranges": [
+            "18-24",
+            "25-34"
+          ]
+        }
+      }
+    },
+    {
+      "username": "mountain_biker_ty",
+      "bio": "Technical trail mountain biking content, gear reviews, and scenic descent videos from trails across North America.",
+      "content_style_tags": [
+        "Sports & Outdoors",
+        "Health"
+      ],
+      "projected_score": 70.54,
+      "semantic_score": 0.2543851879605543,
+      "final_score": 0.45244333458224945,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
+        "High engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 584091,
+        "total_gmv_30d": 2766,
+        "avg_views_30d": 1397693,
+        "engagement_rate": 0.11,
+        "gpm": 13,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7937,
+          "age_ranges": [
+            "18-24",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
       "username": "renter_decor_tips_kay",
       "bio": "Apartment decor hacks for renters who cannot damage walls. Removable solutions and renter-friendly interior design.",
       "content_style_tags": [
@@ -857,9 +802,10 @@
       ],
       "projected_score": 66.06,
       "semantic_score": 0.2798845601150661,
-      "final_score": 0.4892780520517799,
+      "final_score": 0.4392780520517799,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
         "Solid engagement rate"
       ],
       "metrics": {
@@ -886,9 +832,10 @@
       ],
       "projected_score": 66.49,
       "semantic_score": 0.27449743303671925,
-      "final_score": 0.48921884486652367,
+      "final_score": 0.4392188448665237,
       "match_reasons": [
-        "Good semantic relevance to the search query"
+        "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized"
       ],
       "metrics": {
         "follower_count": 135572,
@@ -906,30 +853,31 @@
       }
     },
     {
-      "username": "nas_builds_otto",
-      "bio": "Network-attached storage builds, media server setups, and home data management for self-hosted storage enthusiasts.",
+      "username": "smart_home_build_eli",
+      "bio": "Smart home automation guides using Google Home, Alexa, and HomeKit. Building the connected home step by step.",
       "content_style_tags": [
-        "Computer & Office Equipment",
         "Phones & Electronics"
       ],
-      "projected_score": 63.86,
-      "semantic_score": 0.30499712795036316,
-      "final_score": 0.48847870757766343,
+      "projected_score": 63.13,
+      "semantic_score": 0.4247741103172332,
+      "final_score": 0.4383633496427549,
       "match_reasons": [
         "Strong semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "Solid engagement rate"
       ],
       "metrics": {
-        "follower_count": 20689,
+        "follower_count": 1344811,
         "total_gmv_30d": 0,
-        "avg_views_30d": 1397433,
-        "engagement_rate": 0.08,
+        "avg_views_30d": 920869,
+        "engagement_rate": 0.06,
         "gpm": 0,
         "demographics": {
-          "major_gender": "MALE",
-          "gender_pct": 7658,
+          "major_gender": "FEMALE",
+          "gender_pct": 9145,
           "age_ranges": [
             "25-34",
+            "45-54",
             "55+"
           ]
         }
@@ -943,9 +891,10 @@
       ],
       "projected_score": 70.17,
       "semantic_score": 0.2275896302583933,
-      "final_score": 0.488350333616277,
+      "final_score": 0.438350333616277,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
         "Solid engagement rate"
       ],
       "metrics": {
@@ -965,93 +914,6 @@
       }
     },
     {
-      "username": "lighting_design_tess",
-      "bio": "Home lighting design tips, lamp recommendations, and how proper lighting transforms any room instantly.",
-      "content_style_tags": [
-        "Home"
-      ],
-      "projected_score": 61.51,
-      "semantic_score": 0.3327791492474592,
-      "final_score": 0.4880556171613567,
-      "match_reasons": [
-        "Strong semantic relevance to the search query",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1082577,
-        "total_gmv_30d": 0,
-        "avg_views_30d": 528440,
-        "engagement_rate": 0.09,
-        "gpm": 0,
-        "demographics": {
-          "major_gender": "MALE",
-          "gender_pct": 8832,
-          "age_ranges": [
-            "18-24"
-          ]
-        }
-      }
-    },
-    {
-      "username": "coding_setup_cait",
-      "bio": "Developer environment setup, IDE configurations, and productivity tools for software engineers working from home.",
-      "content_style_tags": [
-        "Computer & Office Equipment",
-        "Phones & Electronics"
-      ],
-      "projected_score": 60.77,
-      "semantic_score": 0.3327791492474592,
-      "final_score": 0.4839856171613567,
-      "match_reasons": [
-        "Strong semantic relevance to the search query",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1175852,
-        "total_gmv_30d": 0,
-        "avg_views_30d": 282361,
-        "engagement_rate": 0.07,
-        "gpm": 0,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 7253,
-          "age_ranges": [
-            "35-44",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
-      "username": "kitchen_organizer_jo",
-      "bio": "Kitchen organization systems, pantry makeovers, and small kitchen solutions for a functional, beautiful cooking space.",
-      "content_style_tags": [
-        "Home"
-      ],
-      "projected_score": 63.26,
-      "semantic_score": 0.2926152174106116,
-      "final_score": 0.47960684783477525,
-      "match_reasons": [
-        "Good semantic relevance to the search query",
-        "Solid engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1997605,
-        "total_gmv_30d": 0,
-        "avg_views_30d": 342051,
-        "engagement_rate": 0.08,
-        "gpm": 0,
-        "demographics": {
-          "major_gender": "FEMALE",
-          "gender_pct": 6451,
-          "age_ranges": [
-            "18-24",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
       "username": "fit_mom_danielle",
       "bio": "Balancing fitness and motherhood. Quick home workouts, healthy recipes, and self-care routines for moms.",
       "content_style_tags": [
@@ -1060,9 +922,10 @@
       ],
       "projected_score": 63.56,
       "semantic_score": 0.2861833487098422,
-      "final_score": 0.47836250691942905,
+      "final_score": 0.42836250691942906,
       "match_reasons": [
-        "Good semantic relevance to the search query"
+        "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized"
       ],
       "metrics": {
         "follower_count": 1690269,
@@ -1088,9 +951,10 @@
       ],
       "projected_score": 62.94,
       "semantic_score": 0.2798845601150661,
-      "final_score": 0.4721180520517798,
+      "final_score": 0.4221180520517798,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
         "High engagement rate"
       ],
       "metrics": {
@@ -1117,9 +981,10 @@
       ],
       "projected_score": 60.66,
       "semantic_score": 0.30499712795036316,
-      "final_score": 0.47087870757766337,
+      "final_score": 0.4208787075776634,
       "match_reasons": [
         "Strong semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
         "High engagement rate"
       ],
       "metrics": {
@@ -1147,9 +1012,10 @@
       ],
       "projected_score": 66.37,
       "semantic_score": 0.2305561464693463,
-      "final_score": 0.4687852659112059,
+      "final_score": 0.4187852659112059,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "Low recent GMV, so score is slightly penalized",
         "Solid engagement rate"
       ],
       "metrics": {
@@ -1178,8 +1044,9 @@
       ],
       "projected_score": 68.11,
       "semantic_score": 0.19966750146940382,
-      "final_score": 0.4644553756612318,
+      "final_score": 0.4144553756612318,
       "match_reasons": [
+        "Low recent GMV, so score is slightly penalized",
         "High engagement rate"
       ],
       "metrics": {
@@ -1199,6 +1066,185 @@
       }
     },
     {
+      "username": "scandinavian_living_el",
+      "bio": "Scandinavian interior design principles, hygge philosophy, and minimalist home aesthetics for clean, calm spaces.",
+      "content_style_tags": [
+        "Home",
+        "Tools & Hardware"
+      ],
+      "projected_score": 62.58,
+      "semantic_score": 0.3497796550458787,
+      "final_score": 0.40159084477064544,
+      "match_reasons": [
+        "Strong semantic relevance to the search query",
+        "No recent GMV, so score is penalized"
+      ],
+      "metrics": {
+        "follower_count": 676177,
+        "total_gmv_30d": 0,
+        "avg_views_30d": 684849,
+        "engagement_rate": 0.04,
+        "gpm": 0,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 8405,
+          "age_ranges": [
+            "55+"
+          ]
+        }
+      }
+    },
+    {
+      "username": "dog_grooming_den",
+      "bio": "At-home dog grooming tutorials, tool reviews, and breed-specific grooming guides for budget-savvy pet parents.",
+      "content_style_tags": [
+        "Pet"
+      ],
+      "projected_score": 66.14,
+      "semantic_score": 0.1948960903348872,
+      "final_score": 0.4014732406506993,
+      "match_reasons": [
+        "Low recent GMV, so score is slightly penalized",
+        "High engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1483421,
+        "total_gmv_30d": 3342,
+        "avg_views_30d": 937055,
+        "engagement_rate": 0.12,
+        "gpm": 19,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 5763,
+          "age_ranges": [
+            "25-34",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
+      "username": "nas_builds_otto",
+      "bio": "Network-attached storage builds, media server setups, and home data management for self-hosted storage enthusiasts.",
+      "content_style_tags": [
+        "Computer & Office Equipment",
+        "Phones & Electronics"
+      ],
+      "projected_score": 63.86,
+      "semantic_score": 0.30499712795036316,
+      "final_score": 0.38847870757766345,
+      "match_reasons": [
+        "Strong semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 20689,
+        "total_gmv_30d": 0,
+        "avg_views_30d": 1397433,
+        "engagement_rate": 0.08,
+        "gpm": 0,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 7658,
+          "age_ranges": [
+            "25-34",
+            "55+"
+          ]
+        }
+      }
+    },
+    {
+      "username": "lighting_design_tess",
+      "bio": "Home lighting design tips, lamp recommendations, and how proper lighting transforms any room instantly.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 61.51,
+      "semantic_score": 0.3327791492474592,
+      "final_score": 0.3880556171613567,
+      "match_reasons": [
+        "Strong semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1082577,
+        "total_gmv_30d": 0,
+        "avg_views_30d": 528440,
+        "engagement_rate": 0.09,
+        "gpm": 0,
+        "demographics": {
+          "major_gender": "MALE",
+          "gender_pct": 8832,
+          "age_ranges": [
+            "18-24"
+          ]
+        }
+      }
+    },
+    {
+      "username": "coding_setup_cait",
+      "bio": "Developer environment setup, IDE configurations, and productivity tools for software engineers working from home.",
+      "content_style_tags": [
+        "Computer & Office Equipment",
+        "Phones & Electronics"
+      ],
+      "projected_score": 60.77,
+      "semantic_score": 0.3327791492474592,
+      "final_score": 0.3839856171613567,
+      "match_reasons": [
+        "Strong semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1175852,
+        "total_gmv_30d": 0,
+        "avg_views_30d": 282361,
+        "engagement_rate": 0.07,
+        "gpm": 0,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 7253,
+          "age_ranges": [
+            "35-44",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
+      "username": "kitchen_organizer_jo",
+      "bio": "Kitchen organization systems, pantry makeovers, and small kitchen solutions for a functional, beautiful cooking space.",
+      "content_style_tags": [
+        "Home"
+      ],
+      "projected_score": 63.26,
+      "semantic_score": 0.2926152174106116,
+      "final_score": 0.3796068478347753,
+      "match_reasons": [
+        "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
+        "Solid engagement rate"
+      ],
+      "metrics": {
+        "follower_count": 1997605,
+        "total_gmv_30d": 0,
+        "avg_views_30d": 342051,
+        "engagement_rate": 0.08,
+        "gpm": 0,
+        "demographics": {
+          "major_gender": "FEMALE",
+          "gender_pct": 6451,
+          "age_ranges": [
+            "18-24",
+            "45-54"
+          ]
+        }
+      }
+    },
+    {
       "username": "bake_with_sophie",
       "bio": "Home baker sharing foolproof cakes, cookies, and bread recipes. Cozy kitchen vibes every weekend.",
       "content_style_tags": [
@@ -1206,9 +1252,10 @@
       ],
       "projected_score": 63.59,
       "semantic_score": 0.2516097872489822,
-      "final_score": 0.46296940426204203,
+      "final_score": 0.36296940426204205,
       "match_reasons": [
-        "Good semantic relevance to the search query"
+        "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized"
       ],
       "metrics": {
         "follower_count": 424066,
@@ -1234,9 +1281,10 @@
       ],
       "projected_score": 61.22,
       "semantic_score": 0.2798845684562763,
-      "final_score": 0.4626580558053244,
+      "final_score": 0.3626580558053244,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "Solid engagement rate"
       ],
       "metrics": {
@@ -1264,9 +1312,10 @@
       ],
       "projected_score": 60,
       "semantic_score": 0.2798845601150661,
-      "final_score": 0.4559480520517798,
+      "final_score": 0.3559480520517798,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "High engagement rate"
       ],
       "metrics": {
@@ -1293,9 +1342,10 @@
       ],
       "projected_score": 61.72,
       "semantic_score": 0.2516097872489822,
-      "final_score": 0.452684404262042,
+      "final_score": 0.35268440426204195,
       "match_reasons": [
-        "Good semantic relevance to the search query"
+        "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized"
       ],
       "metrics": {
         "follower_count": 1975602,
@@ -1315,34 +1365,6 @@
       }
     },
     {
-      "username": "dog_grooming_den",
-      "bio": "At-home dog grooming tutorials, tool reviews, and breed-specific grooming guides for budget-savvy pet parents.",
-      "content_style_tags": [
-        "Pet"
-      ],
-      "projected_score": 66.14,
-      "semantic_score": 0.1948960903348872,
-      "final_score": 0.45147324065069927,
-      "match_reasons": [
-        "High engagement rate"
-      ],
-      "metrics": {
-        "follower_count": 1483421,
-        "total_gmv_30d": 3342,
-        "avg_views_30d": 937055,
-        "engagement_rate": 0.12,
-        "gpm": 19,
-        "demographics": {
-          "major_gender": "MALE",
-          "gender_pct": 5763,
-          "age_ranges": [
-            "25-34",
-            "45-54"
-          ]
-        }
-      }
-    },
-    {
       "username": "athletic_fit_cole",
       "bio": "Activewear and athleisure for men with athletic builds. Finding clothes that actually fit broad shoulders.",
       "content_style_tags": [
@@ -1350,9 +1372,10 @@
       ],
       "projected_score": 63.81,
       "semantic_score": 0.21790047181245886,
-      "final_score": 0.4490102123156065,
+      "final_score": 0.34901021231560647,
       "match_reasons": [
-        "Good semantic relevance to the search query"
+        "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized"
       ],
       "metrics": {
         "follower_count": 666475,
@@ -1378,9 +1401,10 @@
       ],
       "projected_score": 60,
       "semantic_score": 0.2516097872489822,
-      "final_score": 0.443224404262042,
+      "final_score": 0.34322440426204204,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "High engagement rate"
       ],
       "metrics": {
@@ -1409,9 +1433,10 @@
       ],
       "projected_score": 61.97,
       "semantic_score": 0.21790047181245886,
-      "final_score": 0.43889021231560654,
+      "final_score": 0.33889021231560656,
       "match_reasons": [
-        "Good semantic relevance to the search query"
+        "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized"
       ],
       "metrics": {
         "follower_count": 1826541,
@@ -1437,9 +1462,10 @@
       ],
       "projected_score": 61.31,
       "semantic_score": 0.2134979836047901,
-      "final_score": 0.4332790926221556,
+      "final_score": 0.3332790926221556,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "Solid engagement rate"
       ],
       "metrics": {
@@ -1466,9 +1492,10 @@
       ],
       "projected_score": 60.79,
       "semantic_score": 0.20935200397062315,
-      "final_score": 0.4285534017867804,
+      "final_score": 0.3285534017867804,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "High engagement rate"
       ],
       "metrics": {
@@ -1495,9 +1522,10 @@
       ],
       "projected_score": 60,
       "semantic_score": 0.21790047830639936,
-      "final_score": 0.4280552152378797,
+      "final_score": 0.3280552152378797,
       "match_reasons": [
         "Good semantic relevance to the search query",
+        "No recent GMV, so score is penalized",
         "High engagement rate"
       ],
       "metrics": {

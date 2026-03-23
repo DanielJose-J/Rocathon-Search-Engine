@@ -32,17 +32,17 @@ async function main() {
   try {
     result = await pool.query(`
       SELECT id, bio, content_style_tags
-      FROM creators
+      FROM creators_local
       ORDER BY id
     `);
   } catch (error) {
-    throw new Error(`Failed to fetch creators for embedding: ${String(error)}`);
+    throw new Error(`Failed to fetch local creators for embedding: ${String(error)}`);
   }
 
-  console.log(`Creators to embed: ${result.rows.length}`);
+  console.log(`Local creators to embed: ${result.rows.length}`);
 
   if (result.rows.length === 0) {
-    throw new Error("No creators found to embed. Run ingestion first.");
+    throw new Error("No local creators found to embed. Run ingestion first.");
   }
 
   let successCount = 0;
@@ -71,7 +71,7 @@ async function main() {
 
       await pool.query(
         `
-        UPDATE creators
+        UPDATE creators_local
         SET embedding = $1::vector
         WHERE id = $2
         `,
@@ -79,20 +79,20 @@ async function main() {
       );
 
       successCount += 1;
-      console.log(`Embedded creator id ${row.id}`);
+      console.log(`Embedded local creator id ${row.id}`);
     } catch (error) {
-      throw new Error(`Failed embedding creator id ${row.id}: ${String(error)}`);
+      throw new Error(`Failed embedding local creator id ${row.id}: ${String(error)}`);
     }
   }
 
   const check = await pool.query(`
     SELECT COUNT(*) AS count
-    FROM creators
+    FROM creators_local
     WHERE embedding IS NOT NULL
   `);
 
-  console.log("Successfully embedded creators:", successCount);
-  console.log("Creators with embeddings:", check.rows[0].count);
+  console.log("Successfully embedded local creators:", successCount);
+  console.log("Local creators with embeddings:", check.rows[0].count);
 
   await pool.end();
 }
