@@ -223,12 +223,13 @@ npx ts-node src/embedCreatorsOpenAI.ts
 npx ts-node src/searchOpenAI.ts
 ```
 
-## Setup Instructions
+## Setup
 
 ### 1. Install Dependencies
 
 ```bash
-npm install```
+npm install
+```
 
 ### 2. Start PostgreSQL + pgvector in Docker
 
@@ -238,7 +239,8 @@ docker run --name rocathon-postgres \
   -e POSTGRES_PASSWORD=postgres \
   -e POSTGRES_DB=rocathon \
   -p 5433:5432 \
-  -d pgvector/pgvector:pg17```
+  -d pgvector/pgvector:pg17
+```
 
 ### 3. Configure Environment Variables
 
@@ -246,25 +248,37 @@ Create a `.env` file in the project root:
 
 ```env
 DATABASE_URL=postgresql://postgres:postgres@localhost:5433/rocathon
-OPENAI_API_KEY=your_openai_api_key_here```
+OPENAI_API_KEY=your_openai_api_key_here
+```
 
 `OPENAI_API_KEY` is optional if you are only using the local embedding path.
 
 ### 4. Create Database Schema
 
 ```bash
-psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql```
+psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql
+```
+
+---
 
 ## Database Ingest Instructions
 
 ### 1. Validate Source Data
 
 ```bash
-npx ts-node src/checkData.ts
+npm run check-data
 ```
 
-This checks whether the creator dataset is well-formed before ingestion.
+### 2. Ingest Creator Data into PostgreSQL
 
+```bash
+npm run ingest
+```
+
+This loads creator records into:
+
+- `creators_local`
+- `creators_openai`
 ### 2. Ingest Creator Records
 
 ```bash
