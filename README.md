@@ -85,9 +85,12 @@ The search query is embedded and used to retrieve the top candidate creators thr
 
 Example retrieval pattern:
 
-'''sql
+Example retrieval pattern:
+
+```sql
 ORDER BY embedding <=> $1::vector
-LIMIT 50'''
+LIMIT 50
+```
 
 This satisfies the challenge requirement to use a **vector database approach** and avoids performing a full linear scan in application code.
 
@@ -112,8 +115,10 @@ This solution explicitly addresses that requirement.
 
 ### Base Hybrid Score
 
-'''ts
-final_score = (semantic_score * 0.45) + ((projected_score / 100) * 0.55)'''
+```ts
+const final_score =
+  (semantic_score * 0.45) + ((projected_score / 100) * 0.55);
+```
 
 ### Additional Scoring Logic
 
