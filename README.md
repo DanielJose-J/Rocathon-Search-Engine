@@ -1,236 +1,88 @@
 # RoCathon Hybrid Search Engine
 
-A hybrid creator search engine built for the **ReturnOnCreators RoCathon** using **TypeScript (Node.js)**, **PostgreSQL**, and **pgvector**.
+A hybrid creator search engine built for **ReturnOnCreators RoCathon** using **TypeScript (Node.js)**, **PostgreSQL**, and **pgvector**.
 
-This project retrieves creators using **semantic similarity search** and then re-ranks them using **projected business performance**, ensuring strong contextual relevance is balanced with commercial value.
+This solution retrieves creators by **semantic relevance** and then re-ranks them using **projected business performance**, **GMV-aware penalties**, **audience fit**, and **category alignment boosts** so results better reflect both creator fit and commerce value.
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Challenge Requirements Covered](#challenge-requirements-covered)
+- [Execution Plan](#execution-plan)
+- [How the Solution Works](#how-the-solution-works)
+- [How the Ranking Matches the Challenge Rules](#how-the-ranking-matches-the-challenge-rules)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Database Design](#database-design)
+- [Environment Variables](#environment-variables)
+- [Data Ingestion](#data-ingestion)
+- [Embedding Modes](#embedding-modes)
+- [Running Search](#running-search)
+- [Required Output for `brand_smart_home`](#required-output-for-brand_smart_home)
+- [Required API](#required-api)
+- [Enhancements Added](#enhancements-added)
+- [Edge Cases and Robustness Improvements](#edge-cases-and-robustness-improvements)
+- [Sanity Check](#sanity-check)
+- [Example End-to-End Runs](#example-end-to-end-runs)
 
 ---
 
 ## Overview
 
-The goal of this project is to build a **vector-based creator search system** that retrieves and ranks creators not only by semantic relevance, but also by their projected ability to drive business outcomes.
+Brands do not just want creators who *sound* relevant. They want creators who are:
 
-Instead of relying on pure embedding similarity alone, this implementation combines:
+- contextually aligned with the search query
+- commercially promising
 
-- **Vector retrieval** for contextual relevance
-- **Commerce-aware re-ranking** for business alignment
-- **Category alignment signals** for improved brand fit
+Pure semantic search can produce false positives: creators who match the vibe but have weak business performance.
 
-This directly addresses the challenge expectation that:
+This project solves that with a **two-stage hybrid pipeline**:
 
-> **High vibe / zero GMV should rank lower than good vibe / high GMV**
+1. **Vector retrieval** over creator context
+2. **Business-aware reranking** using projected score, GMV-aware logic, audience fit, and category alignment
 
 ---
 
-## Challenge Requirements Addressed
+## Challenge Requirements Covered
 
-### Tech Stack
+### Required Tech Stack
 
 This project uses:
 
 - **TypeScript (Node.js)**
 - **PostgreSQL**
 - **pgvector**
-- **Docker** for local database setup
+- **Docker** for local setup
 
 ### Required API
 
-This repository implements the required interface:
+The repo implements the required search interface in reusable form:
 
 ```ts
 searchCreators(query: string, brandProfile: BrandProfile): Promise<RankedCreator[]>
 ```
 
-Because the implementation interacts with the database, the function is asynchronous and returns a `Promise<RankedCreator[]>`.
+Because the implementation uses database calls, the function is asynchronous and returns `Promise<RankedCreator[]>`.
 
 ### Deliverables Checklist
 
-This repository addresses the requested deliverables:
+This repo addresses the requested deliverables:
 
 - Git repo link
 - README setup instructions
 - DB ingest instructions
-- Output JSON: `RankedCreator[]` for `brand_smart_home` profile
+- Output JSON: `RankedCreator[]` for `brand_smart_home`
+- Loom video (to be recorded separately)
 
 ---
 
-## Business Problem
+## Execution Plan
 
-Brands do not just want creators who sound relevant semantically. They want creators who are:
+Follow these steps in order to reproduce the results.
 
-- **Contextually aligned** with the search intent
-- **Commercially promising** based on performance-related signals
-
-A pure semantic search system can produce false positives by ranking creators who match the wording of the query but have weak business value.
-
-This project solves that problem by combining:
-
-- **Vector retrieval** over creator context
-- **Business-aware re-ranking** using `projected_score`
-- **GMV-sensitive scoring adjustments**
-- **Category alignment boosts**
-
----
-
-## Solution Overview
-
-### 1. Retrieval Layer
-
-Creator embeddings are generated from:
-
-- `bio`
-- `content_style_tags`
-
-The search query is embedded and used to retrieve the top candidate creators through **pgvector similarity search**.
-
-Example retrieval pattern:
-
-Example retrieval pattern:
-
-```sql
-ORDER BY embedding <=> $1::vector
-LIMIT 50
-```
-
-This satisfies the challenge requirement to use a **vector database approach** and avoids performing a full linear scan in application code.
-
-### 2. Ranking Layer
-
-The retrieved creators are re-ranked using a hybrid scoring approach based on:
-
-- `semantic_score`
-- `projected_score`
-- GMV-aware penalties
-- Category alignment boosts
-
-This ensures the final ranking is not only semantically relevant, but also aligned with likely business outcomes.
-
-## Ranking Strategy
-
-The challenge expects ranking behavior where:
-
-> **High vibe / zero GMV ranks lower than good vibe / high GMV**
-
-This solution explicitly addresses that requirement.
-
-### Base Hybrid Score
-
-```ts
-const final_score =
-  (semantic_score * 0.45) + ((projected_score / 100) * 0.55);
-```
-
-### Additional Scoring Logic
-
-After the base hybrid score is calculated, the system applies:
-
-- **GMV penalty** for creators with zero or very low GMV
-- **Category alignment boost** for creators whose tags match the target brand profile
-
-### Why This Matters
-
-This prevents semantically strong but commercially weak creators from consistently outranking creators who are slightly less semantically aligned but significantly stronger from a business perspective.
-
-### Vector DB Requirement
-
-This implementation satisfies the vector database constraint because:
-
-- Embeddings are stored in **PostgreSQL + pgvector**
-- Retrieval happens through **vector similarity SQL**
-- No TypeScript-side linear scan is used to find candidates
-
-### Project Structure
-
-```text
-.
-├── data/
-│   └── creators.json
-├── outputs/
-│   ├── output.brand_smart_home.local.json
-│   ├── output.brand_smart_home.local.<timestamp>.json
-│   ├── output.brand_smart_home.openai.json
-│   └── output.brand_smart_home.openai.<timestamp>.json
-├── sql/
-│   └── schema.sql
-├── src/
-│   ├── checkData.ts
-│   ├── embedCreators.ts
-│   ├── embedCreatorsOpenAI.ts
-│   ├── ingest.ts
-│   ├── localEmbed.ts
-│   ├── outputWriter.ts
-│   ├── sanityCheck.ts
-│   ├── search.ts
-│   ├── searchOpenAI.ts
-│   ├── searchCreators.ts
-│   ├── searchCreatorsOpenAI.ts
-│   └── types.ts
-├── package.json
-├── package-lock.json
-├── tsconfig.json
-└── README.md
-```
-
-
-## Database Design
-
-This project uses two tables:
-
-### `creators_local`
-
-- Stores creator metadata
-- Stores locally generated embeddings
-- Used for the standard local evaluation workflow
-
-### `creators_openai`
-
-- Stores creator metadata
-- Stores OpenAI-generated embeddings
-- Supports the optional higher-quality semantic retrieval path
-
-This separation allows both retrieval modes to coexist cleanly without overwriting one another.
-
-## Example Full Run
-
-### Local Path
-
-```bash
-npm install
-docker run --name rocathon-postgres \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=rocathon \
-  -p 5433:5432 \
-  -d pgvector/pgvector:pg17
-
-psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql
-npx ts-node src/checkData.ts
-npx ts-node src/ingest.ts
-npx ts-node src/embedCreators.ts
-npx ts-node src/search.ts
-```
-
-### OpenAI Path
-
-```bash
-npm install
-docker run --name rocathon-postgres \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=rocathon \
-  -p 5433:5432 \
-  -d pgvector/pgvector:pg17
-
-psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql
-npx ts-node src/checkData.ts
-npx ts-node src/ingest.ts
-npx ts-node src/embedCreatorsOpenAI.ts
-npx ts-node src/searchOpenAI.ts
-```
-
-## Setup
-
-### 1. Install Dependencies
+### 1. Install dependencies
 
 ```bash
 npm install
@@ -247,187 +99,502 @@ docker run --name rocathon-postgres \
   -d pgvector/pgvector:pg17
 ```
 
-### 3. Configure Environment Variables
+### 3. Configure environment variables
 
-Create a `.env` file in the project root:
+Copy the example file:
 
-```env
-DATABASE_URL=postgresql://postgres:postgres@localhost:5433/rocathon
-OPENAI_API_KEY=your_openai_api_key_here
+```bash
+cp .env.example .env
 ```
 
-`OPENAI_API_KEY` is optional if you are only using the local embedding path.
+Then update `.env` with your own values.
 
-### 4. Create Database Schema
+### 4. Create the database schema
 
 ```bash
 psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql
 ```
 
----
-
-## Database Ingest Instructions
-
-### 1. Validate Source Data
+### 5. Validate the dataset
 
 ```bash
 npm run check-data
 ```
 
-### 2. Ingest Creator Data into PostgreSQL
+### 6. Ingest creators into PostgreSQL
 
 ```bash
 npm run ingest
 ```
 
-This loads creator records into:
-
+This loads creator data into:
 - `creators_local`
 - `creators_openai`
-### 2. Ingest Creator Records
+
+### 7. Choose one execution path
+
+#### Option A: Local evaluator-friendly path
+
+Generate local embeddings:
 
 ```bash
-npx ts-node src/ingest.ts
+npm run embed-creators
 ```
 
-This loads creator metadata into PostgreSQL.
-
-### 3. Generate and Store Embeddings
-
-For local embeddings:
+Run sanity checks:
 
 ```bash
-npx ts-node src/embedCreators.ts
+npm run sanity-check
 ```
 
-For OpenAI embeddings:
+Run search:
 
 ```bash
-npx ts-node src/embedCreatorsOpenAI.ts
+npm run search
 ```
 
-After this step, the creator records are ready for vector search.
+Expected output files:
 
-## Search Execution
+- `outputs/top10_brand_smart_home_affordable_home_decor.local.json`
+- `outputs/top10_brand_smart_home_affordable_home_decor.local.<timestamp>.json`
 
-### Local Embedding Path
+#### Option B: OpenAI-powered path
 
-Run the local search flow:
+Generate OpenAI embeddings:
 
 ```bash
-npx ts-node src/search.ts
+npm run embed-creators-openai
 ```
 
-Or call the main function from code:
+Run search:
+
+```bash
+npm run search-openai
+```
+
+Expected output files:
+
+- `outputs/top10_brand_smart_home_affordable_home_decor.openai.json`
+- `outputs/top10_brand_smart_home_affordable_home_decor.openai.<timestamp>.json`
+
+### Recommended evaluation path
+
+For evaluators, the recommended path is:
+
+1. `npm run ingest`
+2. `npm run embed-creators`
+3. `npm run sanity-check`
+4. `npm run search`
+
+This path is fully runnable without paid API usage and produces the required top-10 `brand_smart_home` output JSON.
+
+---
+
+## How the Solution Works
+
+### 1. Ingestion
+
+- Read `creators.json`
+- Validate creator records
+- Insert creator data into PostgreSQL
+
+### 2. Embedding
+
+Creator vectors are generated from:
+
+- `bio`
+- `content_style_tags`
+
+This repo supports **two modes**:
+
+- **Local mode**: evaluator-friendly, no paid API dependency
+- **OpenAI mode**: optional higher-quality semantic retrieval
+
+### 3. Retrieval
+
+A natural-language query is embedded and the **top 50** creators are retrieved using **pgvector** similarity search.
+
+Example retrieval pattern:
+
+```sql
+ORDER BY embedding <=> $1::vector
+LIMIT 50
+```
+
+### 4. Re-ranking
+
+The retrieved candidates are re-ranked using:
+
+- `semantic_score`
+- `projected_score`
+- GMV-aware penalty
+- category alignment boost
+- audience-fit boost
+
+Only the **top 10** final ranked creators are returned for submission.
+
+---
+
+## How the Ranking Matches the Challenge Rules
+
+The challenge states:
+
+> **High vibe / zero GMV must rank lower than good vibe / high GMV**  
+> **Must use a vector DB approach (no linear scan)**
+
+### Rule 1: Vector DB Approach
+
+This is satisfied because:
+
+- embeddings are stored in **PostgreSQL + pgvector**
+- similarity retrieval is performed in SQL
+- no TypeScript-side brute-force linear scan is used for candidate ranking
+
+### Rule 2: High Vibe / Zero GMV Must Rank Lower
+
+This is addressed by:
+
+- hybrid reranking using `semantic_score` and `projected_score`
+- a **strong penalty for zero GMV**
+- a **smaller penalty for very low GMV**
+- category alignment boosts to keep results on-theme
+- audience boosts to better align creators with the target brand profile
+
+Base hybrid formula:
 
 ```ts
-import { searchCreators } from "./src/searchCreators";
-
-const results = await searchCreators("smart home gadgets", brandProfile);
-console.log(results);
+const final_score =
+  (semantic_score * 0.45) + ((projected_score / 100) * 0.55);
 ```
 
-### OpenAI Embedding Path
+Then the system adjusts that score with:
 
-If you want to use OpenAI embeddings for potentially better semantic matching:
+- **GMV penalties**
+- **category alignment boosts**
+- **audience-fit boosts**
 
-```bash
-npx ts-node src/searchOpenAI.ts
-```
+This keeps semantically relevant but commercially weak creators from dominating the final ranking.
 
-Or:
+---
 
-```ts
-import { searchCreatorsOpenAI } from "./src/searchCreatorsOpenAI";
+## Tech Stack
 
-const results = await searchCreatorsOpenAI("smart home gadgets", brandProfile);
-console.log(results);
+| Layer | Technology |
+|---|---|
+| Language | TypeScript / Node.js |
+| Database | PostgreSQL |
+| Vector Search | pgvector |
+| Local DB Runtime | Docker |
+| Optional Semantic Upgrade | OpenAI embeddings |
+
+---
+
+## Project Structure
+
+```text
+.
+├── data/
+│   └── creators.json
+├── outputs/
+│   ├── top10_brand_smart_home_affordable_home_decor.local.json
+│   ├── top10_brand_smart_home_affordable_home_decor.local.<timestamp>.json
+│   ├── top10_brand_smart_home_affordable_home_decor.openai.json
+│   └── top10_brand_smart_home_affordable_home_decor.openai.<timestamp>.json
+├── sql/
+│   └── schema.sql
+├── src/
+│   ├── checkData.ts
+│   ├── embedCreators.ts
+│   ├── embedCreatorsOpenAI.ts
+│   ├── ingest.ts
+│   ├── localEmbed.ts
+│   ├── outputWriter.ts
+│   ├── sanityCheck.ts
+│   ├── search.ts
+│   ├── searchOpenAI.ts
+│   ├── searchCreators.ts
+│   ├── searchCreatorsOpenAI.ts
+│   └── types.ts
+├── .env.example
+├── package.json
+├── package-lock.json
+├── tsconfig.json
+└── README.md
 ```
 
 ---
 
-## Output JSON for `brand_smart_home`
+## Database Design
 
-The final output is written in `RankedCreator[]` format.
+The project uses two tables so both retrieval modes can coexist cleanly.
 
-Example output shape:
+### `creators_local`
 
-```json
-[
-  {
-    "creator_id": "c_001",
-    "handle": "@smarthomeliving",
-    "semantic_score": 0.8421,
-    "projected_score": 87,
-    "final_score": 0.8549
+Used for:
+
+- local embeddings
+- default evaluator-friendly search path
+
+### `creators_openai`
+
+Used for:
+
+- OpenAI embeddings
+- optional higher-quality search path
+
+This avoids overwriting embeddings when switching between local and OpenAI modes.
+
+---
+
+## Environment Variables
+
+Copy the example file:
+
+```bash
+cp .env.example .env
+```
+
+Then update `.env` with your own values.
+
+### Example `.env`
+
+```env
+DATABASE_URL=postgres://postgres:postgres@localhost:5433/rocathon
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+**Notes**
+- `DATABASE_URL` is required
+- `OPENAI_API_KEY` is only required for the optional OpenAI path
+- never commit your real `.env` file
+
+### OpenAI API Key and Billing
+
+To use the optional OpenAI embedding/search path:
+
+1. Sign in to the OpenAI API platform.
+2. Select the correct **project**.
+3. Go to **API Keys**.
+4. Click **Create new secret key**.
+5. Copy and store the key securely.
+
+**Recommended key permissions**
+- **Permission level:** `Restricted`
+- **List models:** `Read`
+- **Model capabilities:** `Write`
+- **All other permissions:** `None`
+
+**Billing notes**
+- API billing is separate from ChatGPT subscriptions.
+- Billing must be enabled for the **same project** where the key was created.
+- New API users may need to add prepaid credits before the OpenAI path will work.
+- There may be a short delay after adding credits before API usage becomes active.
+
+**Practical note**
+For initial troubleshooting, an **All** permission key may be easier to use. For a cleaner final setup, a **Restricted** key is recommended.
+
+---
+
+## Data Ingestion
+
+### Validate the dataset
+
+```bash
+npm run check-data
+```
+
+### Load creators into PostgreSQL
+
+```bash
+npm run ingest
+```
+
+This inserts creator records into:
+- `creators_local`
+- `creators_openai`
+
+---
+
+## Embedding Modes
+
+### Local Mode
+
+Default evaluator-friendly mode.
+
+Generate local embeddings:
+
+```bash
+npm run embed-creators
+```
+
+### OpenAI Mode
+
+Optional higher-quality semantic mode.
+
+Generate OpenAI embeddings:
+
+```bash
+npm run embed-creators-openai
+```
+
+---
+
+## Running Search
+
+### Local Search
+
+```bash
+npm run search
+```
+
+This writes:
+
+- `outputs/top10_brand_smart_home_affordable_home_decor.local.json`
+- `outputs/top10_brand_smart_home_affordable_home_decor.local.<timestamp>.json`
+
+### OpenAI Search
+
+```bash
+npm run search-openai
+```
+
+This writes:
+
+- `outputs/top10_brand_smart_home_affordable_home_decor.openai.json`
+- `outputs/top10_brand_smart_home_affordable_home_decor.openai.<timestamp>.json`
+
+---
+
+## Required Output for `brand_smart_home`
+
+The submission form asks for:
+
+> a JSON file showing the **top 10** results for the example query  
+> **"Affordable home decor for small apartments"**  
+> using the **`brand_smart_home`** profile
+
+This repo generates that deliverable in both modes.
+
+### Local output
+
+```text
+outputs/top10_brand_smart_home_affordable_home_decor.local.json
+```
+
+### OpenAI output
+
+```text
+outputs/top10_brand_smart_home_affordable_home_decor.openai.json
+```
+
+The output shape is `RankedCreator[]` and each of the 10 objects includes:
+
+- `username`
+- `bio`
+- `content_style_tags`
+- `projected_score`
+- `metrics`
+- `scores`
+- optional `match_reasons`
+
+---
+
+## Required API
+
+The reusable search function is implemented as:
+
+```ts
+searchCreators(query: string, brandProfile: BrandProfile): Promise<RankedCreator[]>
+```
+
+### Brand profile used for submission
+
+```ts
+const brandProfile = {
+  id: "brand_smart_home",
+  industries: ["smart home", "home decor", "home organization"],
+  target_audience: {
+    gender: "FEMALE",
+    age_ranges: ["18-24", "25-34", "35-44"]
   },
-  {
-    "creator_id": "c_014",
-    "handle": "@techwithmaya",
-    "semantic_score": 0.8012,
-    "projected_score": 91,
-    "final_score": 0.8615
-  }
-]
-```
-
-Generated files are written to the `outputs/` directory, including timestamped variants for reproducibility.
-
----
-
-## Brand Profile Used
-
-Example `brand_smart_home` profile:
-
-```ts
-const brand_smart_home = {
-  brand_name: "SmartHome Co",
-  categories: ["smart home", "home automation", "consumer tech"],
-  preferred_content_styles: ["educational", "demo-driven", "practical"],
-  target_keywords: ["smart home gadgets", "automation", "connected devices"]
+  gmv: 50000
 };
 ```
 
-This profile is used during re-ranking to apply category-aware alignment boosts.
+### Submission query used in the search scripts
+
+```text
+Affordable home decor for small apartments
+```
 
 ---
 
-## Enhancements Beyond the Minimum Requirements
+## Enhancements Added
 
-In addition to the core challenge requirements, this project includes several quality improvements:
+After covering the core hackathon requirements, the following enhancements were added.
 
-### 1. Hybrid Ranking Instead of Pure Similarity
+### GMV-Aware Penalty
 
-Rather than ranking creators only by embedding distance, the system combines:
+To better enforce:
 
-- Semantic relevance
-- Projected business performance
-- Business-alignment heuristics
+> high vibe / zero GMV must rank lower than good vibe / high GMV
 
-### 2. Category Alignment Boost
+the system applies:
 
-Creators with content tags that align closely with the brand’s target category receive a controlled ranking boost.
+- strong penalty for zero GMV
+- moderate penalty for very low GMV
+- no penalty for healthy GMV
 
-### 3. GMV-Aware Suppression
+### Category Alignment Boost
 
-Creators with very weak business history, especially zero GMV, are prevented from dominating the ranking purely because they sound semantically relevant.
+Creators receive an additional score boost when `content_style_tags` align with `brandProfile.industries`.
 
-### 4. Separate Local and OpenAI Embedding Paths
+This helps category-specific results rank above broadly relevant but less on-theme creators.
 
-This allows:
+### Audience-Fit Boost
 
-- A fully local, reproducible version
-- An optional higher-quality semantic retrieval path
+The scorer also checks whether creator demographics overlap with the brand target audience.
 
-### 5. Timestamped Output Snapshots
+This improves alignment to the provided `brand_smart_home` submission profile.
 
-Search results are saved with stable and timestamped output files for easier testing, comparison, and submission review.
+### Match Reasons
+
+Each ranked creator includes `match_reasons`, such as:
+
+- strong semantic relevance
+- strong projected commerce score
+- strong recent GMV performance
+- industry alignment with the brand
+- audience alignment with the brand target
+
+### Dual Retrieval Modes
+
+The repo includes:
+
+- a no-cost evaluator-friendly local path
+- an optional OpenAI-enhanced path
+
+### Historical Output Files
+
+Both search modes write:
+
+- one stable “latest” output file
+- one timestamped archive file per run
+
+### Deterministic Tie-Breaking
+
+When final scores are very close, ties are broken using:
+1. higher `projected_score`
+2. higher `total_gmv_30d`
+3. alphabetical `username`
+
+This keeps outputs stable and easier to evaluate.
 
 ---
 
 ## Edge Cases and Robustness Improvements
 
-This implementation is designed to behave more reliably in real-world ranking situations and under hidden evaluation cases.
+This implementation is designed to behave more reliably in real-world ranking situations and hidden evaluation cases.
 
 ### High Semantic Match, Weak Business Value
 
@@ -470,13 +637,6 @@ A user may submit an empty string or a query containing only spaces.
 
 **Handled by:**  
 Input validation rejects empty queries before retrieval begins.
-
-### Very Short or Underspecified Queries
-
-Queries such as `"home"` or `"tech"` may be too broad to represent clear intent.
-
-**Handled by:**  
-The system still retrieves candidates, but hybrid reranking and category alignment help reduce weak broad matches.
 
 ### No Strong Semantic Match in the Dataset
 
@@ -530,13 +690,6 @@ Deterministic tie-breaking is applied using:
 2. higher `total_gmv_30d`
 3. alphabetical `username`
 
-### Broad Semantic Match but Weak Domain Fit
-
-A creator may match general lifestyle or home language but not the intended commercial subcategory, such as true smart-home product review content.
-
-**Handled by:**  
-Category alignment boost improves ranking for on-theme creators while limiting broad but weakly aligned matches.
-
 ### Output File Overwrites
 
 Running search multiple times can overwrite a single output file and make result comparison difficult.
@@ -564,40 +717,42 @@ Environment validation and explicit OpenAI error messaging are included to surfa
 
 ## Sanity Check
 
-You can run a quick validation script to verify the ranking behavior:
+Run:
 
 ```bash
-npx ts-node src/sanityCheck.ts
+npm run sanity-check
 ```
 
-This is useful for confirming that:
+This verifies:
 
-- Ranking output is returned in the expected format
-- Higher-value creators are appropriately prioritized
-- The scoring logic behaves as intended for edge cases
+- total creator count
+- embedding count
+- missing usernames
+- missing bios
+- missing tags
+- missing projected scores
 
 ---
 
-## Optional OpenAI API Key Settings
+## Example End-to-End Runs
 
-If you want to use the OpenAI-based embedding path, set:
+### Local Path
 
-```env
-OPENAI_API_KEY=your_openai_api_key_here
+```bash
+psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql
+npm run ingest
+npm run embed-creators
+npm run sanity-check
+npm run search
 ```
 
-If no API key is provided, you can still run the local embedding flow successfully.
+### OpenAI Path
 
-This makes the project flexible for both:
-
-- Evaluator environments, where local reproducibility matters most
-- Improved semantic retrieval experiments, where OpenAI embeddings may help
+```bash
+psql postgresql://postgres:postgres@localhost:5433/rocathon -f sql/schema.sql
+npm run ingest
+npm run embed-creators-openai
+npm run search-openai
+```
 
 ---
-
-## Repository Link
-
-```md
-[GitHub Repository](https://github.com/DanielJose-J/Rocathon-Search-Engine)
-```
-
